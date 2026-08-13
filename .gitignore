@@ -1,0 +1,34 @@
+# Secrets
+.env
+*.key
+*.pem
+credentials.json
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Backups
+*.bak
+*.tmp
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Notion tokens (si jamais)
+.notion_token
+*.token
+
+# Node (si GitHub Actions futures)
+node_modules/
+package-lock.json
