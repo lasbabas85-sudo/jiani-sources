@@ -1,0 +1,3 @@
+# S2 test batch — PDFs for pipeline validation only
+# DO NOT commit binary PDFs to production repos
+*.pdf
