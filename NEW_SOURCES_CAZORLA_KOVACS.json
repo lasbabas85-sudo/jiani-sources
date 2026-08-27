@@ -1,0 +1,71 @@
+[
+  {
+    "type": "PDF",
+    "title": "Quelle activité physique pour quel public à quel âge pourquoi et comment ?",
+    "author": "Georges Cazorla",
+    "institution": "Service des épreuves d'effort et réadaptation, Hôpital Cardiologique Pessac; Fédération Française de Football",
+    "year": "Unknown (lecture/présentation)",
+    "source_type": "EDUCATIONAL_FRAMEWORK",
+    "pertinence": "🟢🟢 HIGH",
+    "topics": ["evaluation_physique", "croissance_adolescents", "tests_terrain", "condition_physique", "u14_u18"],
+    "key_contributions": [
+      "Framework d'évaluation des capacités physiques par tranche d'âge",
+      "Critères de sélection des tests : pertinence, non-redondance, accessibilité, validité, reproductibilité, fonctionnalité",
+      "Distinction capacités liées à la santé vs performance",
+      "Applications pour enseignants, entraîneurs, jeunes athlètes, fédérations"
+    ],
+    "relevance_for_jiani": "Guide complet pour évaluation periodisée U14-U18, critères objectifs sélection tests de terrain",
+    "url": "file:///opt/data/cache/documents/doc_97e8aa4e5628_11_QUELLE_ACTIVITE_PHYSIQUE_POUR_QUEL_PUBLIC_A_QUEL_ÂGE_POURQUOI.pdf",
+    "date_added": "2026-08-27",
+    "validation_status": "BRUTE_PDF"
+  },
+  {
+    "type": "PEER_REVIEWED_ARTICLE",
+    "pmid": null,
+    "doi": "10.1177/1941738111414175",
+    "title": "An 8-Stage Model for Evaluating the Tennis Serve: Implications for Performance Enhancement and Injury Prevention",
+    "authors": ["Mark Kovacs", "Todd Ellenbecker"],
+    "journal": "Sports Health",
+    "year": 2011,
+    "volume": 3,
+    "issue": 6,
+    "pages": "504-",
+    "source_type": "BIOMECHANICS_SERVE",
+    "pertinence": "🟢🟢 HIGH",
+    "topics": ["tennis_serve", "biomechanics", "kinetic_chain", "8_stages", "injury_prevention", "performance"],
+    "key_contributions": [
+      "8-stage tennis-specific serve model (vs 6-stage throwing model)",
+      "3 distinct phases: preparation (stages 1-4), acceleration (stages 5-7), follow-through (stage 8)",
+      "Kinetic chain analysis: legs/trunk produce 51-55% kinetic energy → hand/racket",
+      "Three serve types: flat, slice, topspin 'kick' → different force profiles",
+      "Clinical applications for injury risk assessment and performance optimization"
+    ],
+    "relevance_for_jiani": "Serve technique optimization, injury prevention framework, kinetic chain evaluation for tennis-specific development",
+    "url": "https://doi.org/10.1177/1941738111414175",
+    "url_pdf": "file:///opt/data/cache/documents/doc_98e17b20e1e6_10.1177_1941738111414175 service 8 etapes kovacs.pdf",
+    "date_added": "2026-08-27",
+    "validation_status": "PEER_REVIEWED"
+  },
+  {
+    "type": "PDF",
+    "title": "Évaluation des capacités physiologiques et physiques : I. Évaluation des capacités dites « Anaérobies »",
+    "author": "Georges Cazorla",
+    "institution": "Faculté des Sciences du Sport et de l'Education Physique, Université Victor Segalen Bordeaux 2",
+    "year": 2003,
+    "course": "Masters « Ingénierie de l'entraînement sportif »",
+    "source_type": "TESTING_PROTOCOLS",
+    "pertinence": "🟢🟢 HIGH",
+    "topics": ["anaerobie_alactique", "anaerobie_lactique", "puissance_mecanique", "endurance", "tests_terrain", "evaluation"],
+    "key_contributions": [
+      "Distinction anaérobie alactique (ATP-PCr, <6-7s) vs lactique (glycolyse, 8-20s)",
+      "Tests puissance mécanique: Sargent, escalier Margaria-Kalamen, sprint 10-20m",
+      "Tests endurance: sauts répétés Bosco, squats avec haltères 15s, tractions",
+      "Formule Lewis pour puissance (P = 21.7 × p × Dv)",
+      "Critères de qualité test: pertinence, validité, reproductibilité, accessibilité, non-redondance, fonctionnalité"
+    ],
+    "relevance_for_jiani": "Protocoles d'évaluation directe/indirecte des capacités énergétiques, tests accessibles terrain pour U14-U18",
+    "url": "file:///opt/data/cache/documents/doc_d6983e22d9bb_7-EVALUATION DES CAPACITES ANAEROBIES ET AEROBIES.pdf",
+    "date_added": "2026-08-27",
+    "validation_status": "BRUTE_PDF"
+  }
+]
