@@ -1,0 +1,103 @@
+# 🚀 QUICKSTART — Dashboard Installation (2 minutes)
+
+**Pour Patrick** — Comment installer le dashboard sur le VPS.
+
+---
+
+## One-liner (copie-colle)
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/lasbabas85-sudo/jiani-sources/main/scripts/install-dashboard.sh)
+```
+
+Répond aux questions si demandé, puis c'est prêt. Cron s'exécutera **demain à 6:00 AM**.
+
+---
+
+## Tester MAINTENANT (ne pas attendre 6:00 AM)
+
+```bash
+~/dashboard/run_dashboard.sh
+```
+
+Doit afficher :
+```
+[HH:MM:SS] Starting dashboard generation...
+Fetching seances from Notion...
+  Found XX seances
+[HH:MM:SS] ✓ Dashboard generated successfully
+Output: /home/bas/public_html/dashboard_charge.html (XXXXX bytes)
+```
+
+---
+
+## Vérifier que ça marche
+
+```bash
+# Le fichier HTML existe et est à jour ?
+ls -lh ~/public_html/dashboard_charge.html
+
+# Il contient du vrai JSON (pas le placeholder) ?
+grep -c "{{SEANCES_JSON}}" ~/public_html/dashboard_charge.html
+# Doit afficher: 0
+```
+
+---
+
+## Cron est configuré ?
+
+```bash
+crontab -l | grep run_dashboard
+```
+
+Doit afficher :
+```
+0 6 * * * /home/bas/dashboard/run_dashboard.sh
+```
+
+---
+
+## Si quelque chose échoue
+
+### Token Notion manquant ?
+
+Ajoute-le dans `~/.env` :
+```bash
+echo 'NOTION_API_TOKEN=secret...' >> ~/.env
+chmod 600 ~/.env
+```
+
+Puis relance :
+```bash
+~/dashboard/run_dashboard.sh
+```
+
+### "Permission denied" ?
+
+```bash
+chmod +x ~/dashboard/run_dashboard.sh
+chmod 755 ~/public_html/
+```
+
+### Voir les logs complets
+
+```bash
+tail -50 ~/dashboard/dashboard_last_run.log
+```
+
+---
+
+## Documentation complète
+
+Lire : `README-DASHBOARD.md` dans le même répertoire.
+
+URL GitHub :
+https://github.com/lasbabas85-sudo/jiani-sources/tree/main/scripts
+
+---
+
+## Questions ?
+
+1. Vérifier la **checklist** dans README-DASHBOARD.md (section "Checklist rapide")
+2. Consulter **"Dépannage"** (même doc) pour les erreurs courantes
+3. Demander à Claude en partageant le log complet (`tail -100 ~/dashboard/dashboard_last_run.log`)
