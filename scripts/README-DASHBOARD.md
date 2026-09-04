@@ -100,12 +100,12 @@ Doit retourner `"user"` (pas une erreur 401).
 
 ```bash
 INSTALL_DIR="$HOME/dashboard"           # Où vit le script
-OUTPUT_HTML="$HOME/public_html/dashboard_charge.html"  # Où est généré le HTML
+OUTPUT_HTML="$HOME/generated/dashboard_charge_en.html"  # Où est généré le HTML
 ```
 
 Par défaut, supposent :
 - `~/dashboard/` existe
-- `~/public_html/` est la racine web (adapt si c'est `/var/www/html` ou autre)
+- `~/generated/` existe (création automatique par le script d'install)
 
 ### 3. Cron schedule
 
@@ -153,7 +153,7 @@ Ce script fait :
    ```bash
    [2026-09-04 06:00:15] Starting dashboard generation...
    [2026-09-04 06:00:18] ✓ Dashboard generated successfully
-   Output: /home/bas/public_html/dashboard_charge.html (12345 bytes)
+   Output: /home/bas/generated/dashboard_charge_en.html (12345 bytes)
    ```
 
 ---
@@ -183,11 +183,11 @@ ls -la ~/dashboard/run_dashboard.sh
 ~/dashboard/run_dashboard.sh
 
 # Vérifier que le HTML a été généré
-ls -lh ~/public_html/dashboard_charge.html
+ls -lh ~/generated/dashboard_charge_en.html
 
 # Vérifier qu'il contient du JSON valide (pas le placeholder {{SEANCES_JSON}})
-grep -c "{{SEANCES_JSON}}" ~/public_html/dashboard_charge.html  # Doit afficher 0
-grep -c "const SEANCES = \[" ~/public_html/dashboard_charge.html  # Doit afficher 1
+grep -c "{{SEANCES_JSON}}" ~/generated/dashboard_charge_en.html  # Doit afficher 0
+grep -c "const SEANCES = \[" ~/generated/dashboard_charge_en.html  # Doit afficher 1
 ```
 
 ---
@@ -244,7 +244,7 @@ echo $NOTION_API_TOKEN | wc -c  # Doit être ~50 caractères
 tail -20 ~/dashboard/dashboard_last_run.log
 
 # Vérifier que le HTML contient bien du JSON
-grep "const SEANCES = " ~/public_html/dashboard_charge.html | head -c 200
+grep "const SEANCES = " ~/generated/dashboard_charge_en.html | head -c 200
 ```
 
 **Causes possibles :**
@@ -264,7 +264,7 @@ stat ~/.env
 # Doit montrer que tu peux lire (r--)
 
 # Vérifier que le répertoire de sortie est inscriptible
-ls -la ~/public_html/
+ls -la ~/generated/
 # Doit montrer que tu peux écrire (rwx)
 ```
 
@@ -272,7 +272,7 @@ ls -la ~/public_html/
 ```bash
 # Corriger les permissions
 chmod 644 ~/.env
-chmod 755 ~/public_html/
+chmod 755 ~/generated/
 ```
 
 ---
@@ -364,9 +364,9 @@ Avant de demander de l'aide :
 
 - [ ] `crontab -l | grep run_dashboard` — la ligne existe ?
 - [ ] `tail ~/dashboard/dashboard_last_run.log` — dernière exécution réussie (✓) ou échouée (✗) ?
-- [ ] `ls -lh ~/public_html/dashboard_charge.html` — fichier existe et > 10 KB ?
-- [ ] `curl -s -H "Authorization: Bearer $NOTION_API_TOKEN" https://api.notion.com/v1/users/me | jq .` — token valide (retourne un objet, pas erreur 401) ?
-- [ ] `grep "{{SEANCES_JSON}}" ~/public_html/dashboard_charge.html | wc -l` — affiche 0 (pas de placeholder) ?
+- [ ] `ls -lh ~/generated/dashboard_charge_en.html` — fichier existe et > 10 KB ?
+- [ ] `curl -s -H "Authorization: Bearer $NOTIO...EN" https://api.notion.com/v1/users/me | jq .` — token valide (retourne un objet, pas erreur 401) ?
+- [ ] `grep "{{SEANCES_JSON}}" ~/generated/dashboard_charge_en.html | wc -l` — affiche 0 (pas de placeholder) ?
 
 Si tout ✅ : le dashboard fonctionne, le problème est probablement côté affichage/web.
 
