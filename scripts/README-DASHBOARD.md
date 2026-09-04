@@ -291,7 +291,7 @@ Affiche quelque chose comme :
 Fetching seances from Notion...
   Found 34 seances
 [2026-09-04 06:00:18] ✓ Dashboard generated successfully
-Output: /home/bas/public_html/dashboard_charge.html (12345 bytes)
+Output: /home/bas/generated/dashboard_charge_en.html (12345 bytes)
 ```
 
 ### Suivre les logs en temps réel
