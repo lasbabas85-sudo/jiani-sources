@@ -78,21 +78,24 @@ fi
 set +a
 
 INSTALL_DIR="$(dirname "$0")"
-OUTPUT_HTML="$HOME/generated/dashboard_charge_en.html"
+OUTPUT_DIR="$HOME/generated"
 PYTHON_SCRIPT="$INSTALL_DIR/generate_dashboard.py"
 LOG_FILE="$INSTALL_DIR/dashboard_last_run.log"
 
-# Run generator with error logging
+# Run generator with error logging (generates both _en.html and _zh.html)
 {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting dashboard generation..."
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting dashboard generation (multilingual: en, zh)..."
     python3 "$PYTHON_SCRIPT" \
         --notion-token "$NOTION_API_TOKEN" \
-        --output "$OUTPUT_HTML" 2>&1
+        --output-dir "$OUTPUT_DIR" \
+        --languages "en,zh" 2>&1
     EXIT_CODE=$?
     
     if [ $EXIT_CODE -eq 0 ]; then
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✓ Dashboard generated successfully"
-        echo "Output: $OUTPUT_HTML ($(stat --format=%s "$OUTPUT_HTML") bytes)"
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✓ All dashboards generated successfully"
+        echo "Output:"
+        [ -f "$OUTPUT_DIR/dashboard_charge_en.html" ] && echo "  - $OUTPUT_DIR/dashboard_charge_en.html ($(stat --format=%s "$OUTPUT_DIR/dashboard_charge_en.html") bytes)"
+        [ -f "$OUTPUT_DIR/dashboard_charge_zh.html" ] && echo "  - $OUTPUT_DIR/dashboard_charge_zh.html ($(stat --format=%s "$OUTPUT_DIR/dashboard_charge_zh.html") bytes)"
     else
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✗ FAILED with exit code $EXIT_CODE"
         exit $EXIT_CODE

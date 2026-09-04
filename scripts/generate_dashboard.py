@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """
-Generate dashboard HTML from Notion Seances database.
+Generate multilingual dashboard HTML from Notion Seances database.
 
 Usage:
-  python3 generate_dashboard.py --notion-token <TOKEN> --output <PATH>
+  python3 generate_dashboard.py --notion-token <TOKEN> --output-dir <DIR> [--languages en,zh]
 
 This script:
 1. Fetches all seances from Notion "Seances" database
 2. Extracts: date, duree_min (Durée séance), rpe (Intensité perçue)
-3. Replaces {{SEANCES_JSON}} and {{GENERATED_AT}} in the template
-4. Writes the final HTML to --output
+3. Loads localized templates (_en.html, _zh.html)
+4. Replaces {{SEANCES_JSON}} and {{GENERATED_AT}} in each template
+5. Writes the final HTML files to --output-dir
+
+Default languages: en,zh (both files generated)
 """
 
 import json
@@ -22,6 +25,12 @@ import argparse
 # Notion API constants
 NOTION_API_VERSION = "2022-06-28"
 NOTION_SEANCES_DB_ID = "3824293d-742f-8084-945c-000b885a1b37"
+
+# Language to template filename mapping
+LANGUAGE_TEMPLATES = {
+    "en": "dashboard_charge_en.html",
+    "zh": "dashboard_charge_zh.html",
+}
 
 def fetch_seances(token):
     """Fetch all seances from Notion database."""
@@ -81,16 +90,26 @@ def fetch_seances(token):
     
     return sorted(seances, key=lambda x: x["date"])
 
-def generate_dashboard(token, output_path):
-    """Generate dashboard HTML."""
+def generate_dashboard_for_language(token, output_dir, language):
+    """Generate dashboard HTML for a specific language."""
     
     # Fetch seances
-    print("Fetching seances from Notion...", file=sys.stderr)
+    print(f"[{language.upper()}] Fetching seances from Notion...", file=sys.stderr)
     seances = fetch_seances(token)
-    print(f"  Found {len(seances)} seances", file=sys.stderr)
+    print(f"[{language.upper()}]   Found {len(seances)} seances", file=sys.stderr)
+    
+    # Determine template path
+    if language not in LANGUAGE_TEMPLATES:
+        raise ValueError(f"Unsupported language: {language}. Supported: {', '.join(LANGUAGE_TEMPLATES.keys())}")
+    
+    template_filename = LANGUAGE_TEMPLATES[language]
+    template_path = Path(__file__).parent / template_filename
+    
+    if not template_path.exists():
+        raise FileNotFoundError(f"Template not found: {template_path}")
     
     # Load template
-    template_path = Path(__file__).parent / "dashboard_charge_v2_template.html"
+    print(f"[{language.upper()}] Loading template: {template_filename}", file=sys.stderr)
     with open(template_path, "r", encoding="utf-8") as f:
         template = f.read()
     
@@ -101,25 +120,48 @@ def generate_dashboard(token, output_path):
     html = template.replace("{{SEANCES_JSON}}", seances_json)
     html = html.replace("{{GENERATED_AT}}", generated_at)
     
+    # Determine output filename
+    output_filename = f"dashboard_charge_{language}.html"
+    output_file = Path(output_dir) / output_filename
+    
     # Write output
-    output_file = Path(output_path)
     output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(html)
     
-    print(f"Dashboard generated: {output_file}", file=sys.stderr)
+    print(f"[{language.upper()}] ✓ Dashboard generated: {output_file}", file=sys.stderr)
     return output_file
 
+def generate_dashboard(token, output_dir, languages):
+    """Generate dashboard HTML for all requested languages."""
+    
+    output_files = []
+    
+    for language in languages:
+        try:
+            output_file = generate_dashboard_for_language(token, output_dir, language)
+            output_files.append(output_file)
+        except Exception as e:
+            print(f"[{language.upper()}] Error: {e}", file=sys.stderr)
+            raise
+    
+    print(f"\n✓ All dashboards generated successfully ({len(output_files)} files)", file=sys.stderr)
+    return output_files
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate dashboard from Notion seances")
+    parser = argparse.ArgumentParser(description="Generate multilingual dashboards from Notion seances")
     parser.add_argument("--notion-token", required=True, help="Notion API token")
-    parser.add_argument("--output", required=True, help="Output HTML file path")
+    parser.add_argument("--output-dir", required=True, help="Output directory for HTML files")
+    parser.add_argument("--languages", default="en,zh", help="Comma-separated languages (default: en,zh)")
     
     args = parser.parse_args()
     
+    # Parse languages
+    languages = [lang.strip() for lang in args.languages.split(",")]
+    
     try:
-        generate_dashboard(args.notion_token, args.output)
+        generate_dashboard(args.notion_token, args.output_dir, languages)
         sys.exit(0)
     except Exception as e:
-        print(f"Error: {e}", file=sys.stderr)
+        print(f"Fatal error: {e}", file=sys.stderr)
         sys.exit(1)
