@@ -188,10 +188,11 @@
     <div class="caption">Charge moyenne quotidienne ÷ écart-type, sur fenêtre glissante 7j — mesure la répétitivité de l'entraînement</div>
     <div id="chart-monotony"></div>
     <div class="legend">
-      <span><i style="background:var(--accent-soft); border:1px solid var(--accent);"></i>≤ 2 recommandé</span>
-      <span><i style="background:var(--danger-soft); border:1px solid var(--danger);"></i>&gt; 2 à surveiller</span>
+      <span><i style="background:var(--accent-soft); border:1px solid var(--accent);"></i>&lt; 1,5 OK</span>
+      <span><i style="background:var(--warn-soft); border:1px solid var(--warn);"></i>1,5–2 Vigilance</span>
+      <span><i style="background:var(--danger-soft); border:1px solid var(--danger);"></i>≥ 2 Au-dessus du seuil Foster</span>
     </div>
-    <div class="source">Formule et seuil : Foster, C. (1998), Med Sci Sports Exerc, 30(7):1164-1168 — calcul original en semaine civile fixe ; adapté ici en fenêtre glissante 7j pour cohérence avec l'ACWR</div>
+    <div class="source">Seuil Foster : Foster, C. (1998), Med Sci Sports Exerc, 30(7):1164-1168. Zone jaune (1,5–2) = marge opérationnelle de vigilance (non-sourcée). Calcul : fenêtre glissante 7j, moyenne quotidienne ÷ écart-type.</div>
   </section>
 
   <footer>
@@ -373,10 +374,10 @@ if(monotonyValue===null){
   monoCell.querySelector('.pill').textContent = 'Semaine incomplète';
 } else {
   monoCell.querySelector('.value').innerHTML = `${monotonyValue.toFixed(2)}`;
-  const cls = monotonyValue<=2 ? 'ok' : 'danger';
+  const cls = classify(monotonyValue, {low:-Infinity, targetMax:1.5, warnMax:2});
   const pill = monoCell.querySelector('.pill');
   pill.className = 'pill '+cls;
-  pill.textContent = cls==='ok' ? 'OK (≤2)' : 'Au-dessus du seuil';
+  pill.textContent = cls==='ok' ? 'OK (<1,5)' : cls==='warn' ? 'Vigilance (1,5–2)' : 'Au-dessus du seuil Foster';
 }
 
 /* ---------- SVG helpers ---------- */
@@ -489,7 +490,8 @@ renderLineChartWithBands(document.getElementById('chart-acwr'), acwrSeries, {
 renderLineChartWithBands(document.getElementById('chart-monotony'), monotonySeries, {
   yMax: 3, yStep: 0.5,
   bands: [
-    {from:0, to:2, color:'#1f332c'},
+    {from:0, to:1.5, color:'#1f332c'},
+    {from:1.5, to:2, color:'#3a2f1a'},
     {from:2, to:3, color:'#3a221d'}
   ],
   insufficientText: 'Données insuffisantes — la monotonie nécessite au moins 6 jours sur les 7 derniers avec charge renseignée.'
