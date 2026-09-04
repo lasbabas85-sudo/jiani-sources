@@ -90,13 +90,29 @@ def fetch_seances(token):
     
     return sorted(seances, key=lambda x: x["date"])
 
-def generate_dashboard_for_language(token, output_dir, language):
-    """Generate dashboard HTML for a specific language."""
+def generate_dashboard(token, output_dir, languages):
+    """Generate dashboard HTML for all requested languages."""
     
-    # Fetch seances
-    print(f"[{language.upper()}] Fetching seances from Notion...", file=sys.stderr)
+    # Fetch seances once, reuse for all languages
+    print("Fetching seances from Notion (shared across all languages)...", file=sys.stderr)
     seances = fetch_seances(token)
-    print(f"[{language.upper()}]   Found {len(seances)} seances", file=sys.stderr)
+    print(f"  Found {len(seances)} seances\n", file=sys.stderr)
+    
+    output_files = []
+    
+    for language in languages:
+        try:
+            output_file = generate_dashboard_for_language_from_data(seances, output_dir, language)
+            output_files.append(output_file)
+        except Exception as e:
+            print(f"[{language.upper()}] Error: {e}", file=sys.stderr)
+            raise
+    
+    print(f"\n✓ All dashboards generated successfully ({len(output_files)} files)", file=sys.stderr)
+    return output_files
+
+def generate_dashboard_for_language_from_data(seances, output_dir, language):
+    """Generate dashboard HTML for a specific language from pre-fetched seances data."""
     
     # Determine template path
     if language not in LANGUAGE_TEMPLATES:
@@ -131,22 +147,6 @@ def generate_dashboard_for_language(token, output_dir, language):
     
     print(f"[{language.upper()}] ✓ Dashboard generated: {output_file}", file=sys.stderr)
     return output_file
-
-def generate_dashboard(token, output_dir, languages):
-    """Generate dashboard HTML for all requested languages."""
-    
-    output_files = []
-    
-    for language in languages:
-        try:
-            output_file = generate_dashboard_for_language(token, output_dir, language)
-            output_files.append(output_file)
-        except Exception as e:
-            print(f"[{language.upper()}] Error: {e}", file=sys.stderr)
-            raise
-    
-    print(f"\n✓ All dashboards generated successfully ({len(output_files)} files)", file=sys.stderr)
-    return output_files
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate multilingual dashboards from Notion seances")

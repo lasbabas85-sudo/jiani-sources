@@ -20,7 +20,7 @@ echo ""
 REPO_URL="https://raw.githubusercontent.com/lasbabas85-sudo/jiani-sources/main"
 INSTALL_DIR="$HOME/dashboard"
 SCRIPT_NAME="generate_dashboard.py"
-OUTPUT_HTML="$HOME/generated/dashboard_charge_en.html"  # English version (content in FR for now)
+OUTPUT_DIR="$HOME/generated"  # Directory for multilingual outputs (_en.html + _zh.html)
 NOTION_TOKEN_VAR="NOTION_API_TOKEN"  # Must match .env variable name
 
 # ============================================================================
@@ -29,7 +29,7 @@ NOTION_TOKEN_VAR="NOTION_API_TOKEN"  # Must match .env variable name
 
 echo "Step 1: Creating directories..."
 mkdir -p "$INSTALL_DIR"
-mkdir -p "$(dirname "$OUTPUT_HTML")"
+mkdir -p "$OUTPUT_DIR"
 
 # ============================================================================
 # STEP 2: Download script
@@ -165,7 +165,9 @@ echo "=== Installation Summary ==="
 echo "Checks passed: $CHECKS_PASSED/$CHECKS_TOTAL"
 echo ""
 echo "📁 Installation directory: $INSTALL_DIR"
-echo "📄 Output HTML: $OUTPUT_HTML"
+echo "📂 Output directory: $OUTPUT_DIR"
+echo "  - dashboard_charge_en.html (generated daily)"
+echo "  - dashboard_charge_zh.html (generated daily)"
 echo "📋 Last run log: $INSTALL_DIR/dashboard_last_run.log"
 echo "⏰ Cron schedule: Daily at 6:00 AM"
 echo ""
