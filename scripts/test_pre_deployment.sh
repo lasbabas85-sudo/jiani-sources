@@ -16,8 +16,12 @@ trap "rm -rf '$TEMP_DIR'" EXIT
 
 # Test 1: Bash syntax
 echo "Test 1: Bash syntax validation"
-bash -n "$SCRIPT_DIR/install-dashboard.sh" && echo "✓ install-dashboard.sh syntax OK" || exit 1
-bash -n "$SCRIPT_DIR/run_dashboard.sh" && echo "✗ run_dashboard.sh doesn't exist yet (expected)" || true
+if bash -n "$SCRIPT_DIR/install-dashboard.sh" 2>/dev/null; then
+    echo "✓ install-dashboard.sh syntax OK"
+else
+    echo "✗ install-dashboard.sh syntax error"
+    exit 1
+fi
 echo ""
 
 # Test 2: Python syntax
