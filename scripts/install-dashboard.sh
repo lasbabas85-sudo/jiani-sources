@@ -20,7 +20,7 @@ echo ""
 REPO_URL="https://raw.githubusercontent.com/lasbabas85-sudo/jiani-sources/main"
 INSTALL_DIR="$HOME/dashboard"
 SCRIPT_NAME="generate_dashboard.py"
-OUTPUT_HTML="$HOME/public_html/dashboard_charge.html"  # Adjust if web root is different
+OUTPUT_HTML="$HOME/generated/dashboard_charge_en.html"  # English version (content in FR for now)
 NOTION_TOKEN_VAR="NOTION_API_TOKEN"  # Must match .env variable name
 
 # ============================================================================
@@ -60,7 +60,6 @@ else
     echo "⚠️  $ENV_FILE not found"
     echo "   You'll need to create it with: $NOTION_TOKEN_VAR=your_token..."
 fi
-fi
 
 # ============================================================================
 # STEP 4: Create wrapper script for cron
@@ -79,7 +78,7 @@ fi
 set +a
 
 INSTALL_DIR="$(dirname "$0")"
-OUTPUT_HTML="$HOME/public_html/dashboard_charge.html"
+OUTPUT_HTML="$HOME/generated/dashboard_charge_en.html"
 PYTHON_SCRIPT="$INSTALL_DIR/generate_dashboard.py"
 LOG_FILE="$INSTALL_DIR/dashboard_last_run.log"
 

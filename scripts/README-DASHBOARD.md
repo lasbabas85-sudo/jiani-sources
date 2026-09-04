@@ -26,6 +26,8 @@ Le dashboard `dashboard_charge.html` affiche :
 
 **Données source :** La base Notion "Séances" (database ID `3824293d-742f-8084-945c-000b885a1b37`)
 
+**Fichier généré :** `~/generated/dashboard_charge_en.html` (contenu en français pour l'instant)
+
 **Mise à jour :** Automatique chaque jour à **6:00 AM UTC** (cron job)
 
 ---
@@ -41,8 +43,9 @@ VPS Hetzner (bas@vps.jiani.dev)
 │  ├─ run_dashboard.sh                    # Wrapper pour cron
 │  └─ dashboard_last_run.log              # Logs de chaque exécution
 │
-├─ ~/public_html/
-│  └─ dashboard_charge.html               # Fichier généré (servi au web)
+├─ ~/generated/
+│  ├─ dashboard_charge_en.html            # Fichier généré (renommage, contenu FR)
+│  └─ dashboard_charge_zh.html            # À intégrer ultérieurement (template v3)
 │
 └─ crontab
    └─ 0 6 * * * ~/dashboard/run_dashboard.sh  # Exécution quotidienne
@@ -309,18 +312,18 @@ grep "Starting dashboard" ~/dashboard/dashboard_last_run.log | tail -10
 grep "FAILED\|Error\|✗" ~/dashboard/dashboard_last_run.log
 ```
 
-### Vérifier que le HTML final est valide
+### Vérifier que ça marche
 
 ```bash
-# Vérifier la taille du fichier (doit être > 10 KB)
-ls -lh ~/public_html/dashboard_charge.html
+# Le fichier HTML existe et est à jour ?
+ls -lh ~/generated/dashboard_charge_en.html
 
-# Vérifier qu'il y a du JSON valide (pas le placeholder)
-grep -o "{{SEANCES_JSON}}" ~/public_html/dashboard_charge.html | wc -l
-# Doit afficher 0 (pas de placeholder non remplacé)
+# Il contient du vrai JSON (pas le placeholder) ?
+grep -c "{{SEANCES_JSON}}" ~/generated/dashboard_charge_en.html
+# Doit afficher: 0 (pas de placeholder non remplacé)
 
 # Compter le nombre de séances dans le JSON
-grep -o '"date"' ~/public_html/dashboard_charge.html | wc -l
+grep -o '"date"' ~/generated/dashboard_charge_en.html | wc -l
 # Doit afficher > 0
 ```
 
