@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>训练负荷 — Jiani</title>
+<style>
+  :root{
+    --ink:#e8e6df;
+    --paper:#15171c;
+    --panel:#1c1f26;
+    --line:#2e323b;
+    --muted:#8b8779;
+    --accent:#5fae94;      /* vert - zone cible */
+    --accent-soft:#1f332c;
+    --warn:#d9a54f;        /* ambre - vigilance */
+    --warn-soft:#3a2f1a;
+    --danger:#e0705a;      /* terracotta rouge - alerte */
+    --danger-soft:#3a221d;
+    --low:#7fa3c9;         /* bleu - sous-sollicitation */
+    --low-soft:#1e2a38;
+    --mono-font: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height:1.45;
+  }
+
+  .wrap{max-width:980px; margin:0 auto; padding:28px 20px 60px;}
+
+  header.top{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:14px; margin-bottom:22px;
+    flex-wrap:wrap; gap:10px;
+  }
+  header.top h1{
+    font-size:22px; margin:0; letter-spacing:-0.01em; font-weight:700;
+  }
+  header.top .sub{
+    font-family:var(--mono-font);
+    font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;
+  }
+  header.top .updated{
+    font-family:var(--mono-font);
+    font-size:11px; color:var(--muted);
+    text-align:right;
+  }
+
+  /* ---- bandeau statut ---- */
+  .status-band{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:26px;
+  }
+  .status-cell{
+    background:var(--panel);
+    padding:16px 18px;
+  }
+  .status-cell .label{
+    font-family:var(--mono-font);
+    font-size:10.5px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--muted); margin-bottom:6px; display:block;
+  }
+  .status-cell .value{
+    font-size:24px; font-weight:700; font-family:var(--mono-font);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .status-cell .value small{font-size:13px; font-weight:500; color:var(--muted);}
+  .pill{
+    display:inline-block; padding:2px 9px; border-radius:20px;
+    font-size:11px; font-weight:600; font-family:var(--mono-font);
+    margin-top:8px;
+  }
+  .pill.ok{background:var(--accent-soft); color:var(--accent);}
+  .pill.warn{background:var(--warn-soft); color:var(--warn);}
+  .pill.danger{background:var(--danger-soft); color:var(--danger);}
+  .pill.low{background:var(--low-soft); color:var(--low);}
+  .pill.neutral{background:#2a2d33; color:#9a968a;}
+
+  /* ---- panels graphiques ---- */
+  .panel{
+    background:var(--panel); border:1px solid var(--line);
+    padding:20px 22px 26px; margin-bottom:20px;
+  }
+  .panel h2{
+    font-size:13px; text-transform:uppercase; letter-spacing:.05em;
+    margin:0 0 2px; font-weight:700;
+  }
+  .panel .caption{
+    font-size:12px; color:var(--muted); margin-bottom:14px;
+  }
+  .panel .source{
+    font-size:10.5px; color:var(--muted); font-family:var(--mono-font);
+    margin-top:10px; border-top:1px dashed var(--line); padding-top:8px;
+  }
+
+  svg{display:block; width:100%; height:auto;}
+
+  .legend{
+    display:flex; gap:18px; flex-wrap:wrap;
+    font-size:11px; color:var(--muted); margin-top:10px; font-family:var(--mono-font);
+  }
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .legend i{width:10px; height:10px; display:inline-block; border-radius:2px;}
+
+  .insufficient{
+    display:flex; align-items:center; justify-content:center;
+    height:180px; border:1px dashed var(--line);
+    color:var(--muted); font-family:var(--mono-font); font-size:12.5px;
+    text-align:center; padding:20px;
+  }
+
+  footer{
+    margin-top:30px; font-size:11px; color:var(--muted);
+    font-family:var(--mono-font); text-align:center;
+  }
+
+  @media (max-width:640px){
+    .status-band{grid-template-columns:1fr;}
+    header.top{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <h1>训练负荷 — Jiani</h1>
+      <div class="sub">训练负荷 · 急慢性比（7天）· 单调性指数</div>
+    </div>
+    <div class="updated">Généré le {{GENERATED_AT}}<br>Source : Notion — Séances</div>
+  </header>
+
+  <!-- ============ BANDEAU STATUT (calculé en JS ci-dessous à partir de SEANCES_JSON) ============ -->
+  <section class="status-band">
+    <div class="status-cell">
+      <span class="label">训练负荷 — 过去7天</span>
+      <div class="value">— <small>UA</small></div>
+      <span class="pill neutral">—</span>
+    </div>
+    <div class="status-cell">
+      <span class="label">急慢性比（急性/慢性）</span>
+      <div class="value">—</div>
+      <span class="pill neutral">—</span>
+    </div>
+    <div class="status-cell">
+      <span class="label">单调性指数</span>
+      <div class="value">—</div>
+      <span class="pill neutral">—</span>
+    </div>
+  </section>
+
+  <!-- ============ CHARGE HEBDO (barres) ============ -->
+  <section class="panel">
+    <h2>周训练负荷</h2>
+    <div class="caption">训练负荷 = 训练时长（分钟）× 自我感觉用力程度（RPE，0–10分） — Foster 等人（2001）提出的 Session-RPE 方法</div>
+    <div id="chart-charge"></div>
+    <div class="source">Foster, C. 等人（2001），J Strength Cond Res, 15:109-115 — 计算方法 · Genevois, Rogowski &amp; Le Solliec（2020），ITF Coaching and Sport Science Review — 网球应用</div>
+  </section>
+
+  <!-- ============ ACWR (courbe + zones) ============ -->
+  <section class="panel">
+    <h2>急慢性比 — 短期负荷与平均负荷的比值</h2>
+    <div class="caption">急性负荷 = 过去7天 · 慢性负荷 = 过去4周平均值</div>
+    <div id="chart-acwr"></div>
+    <div class="legend">
+      <span><i style="background:var(--low-soft); border:1px solid var(--low);"></i>< 0,8 训练不足</span>
+      <span><i style="background:var(--accent-soft); border:1px solid var(--accent);"></i>0,8–1,3 达标</span>
+      <span><i style="background:var(--warn-soft); border:1px solid var(--warn);"></i>1,3–1,5 需要关注</span>
+      <span><i style="background:var(--danger-soft); border:1px solid var(--danger);"></i>> 1,5 风险较高</span>
+    </div>
+    <div class="source">Blanch &amp; Gabbett（2016），Br J Sports Med, 50:471-475 · Myers 等人（2020），Med Sci Sports Exerc, 52(5):1196-1200 — 青少年网球，~14岁 · Moreno-Pérez 等人（2021），Eur J Sport Sci, 21(8):1215-1223 — 高水平青少年</div>
+  </section>
+
+  <!-- ============ MONOTONIE (courbe + seuil) ============ -->
+  <section class="panel">
+    <h2>单调性指数</h2>
+    <div class="caption">平均日均负荷 ÷ 标准差，采用7天滑动窗口——测量训练内容的重复程度</div>
+    <div id="chart-monotony"></div>
+    <div class="legend">
+      <span><i style="background:var(--accent-soft); border:1px solid var(--accent);"></i>< 1,5 正常</span>
+      <span><i style="background:var(--warn-soft); border:1px solid var(--warn);"></i>1,5–2 偏高</span>
+      <span><i style="background:var(--danger-soft); border:1px solid var(--danger);"></i>≥ 2 高于Foster阈值</span>
+    </div>
+    <div class="source">Foster阈值：Foster, C.（1998），Med Sci Sports Exerc, 30(7):1164-1168。黄色区域（1,5–2）= 操作警告边界（未标注）。计算：7天滑动窗口，平均日均负荷 ÷ 标准差。</div>
+  </section>
+
+  <footer>
+    此页面根据Notion "Seances" 数据库自动生成 · 无需手动录入数据<br>
+    阈值已标注资料 —— 详见SOURCES_DURABLE查看完整参考资料
+  </footer>
+
+</div>
+
+<script>
+/* =========================================================================
+   DONNÉES INJECTÉES PAR LE SCRIPT SERVEUR (Patrick / Hetzner)
+   Le script remplace ce bloc par les vraies données Notion à chaque run.
+   Format attendu : voir commentaires sur chaque champ.
+   ========================================================================= */
+const SEANCES = {{SEANCES_JSON}};
+/* Exemple de structure attendue pour SEANCES (array d'objets) :
+[
+  {"date": "2026-08-18", "duree_min": 180, "rpe": 6.5},
+  {"date": "2026-08-19", "duree_min": 180, "rpe": 6},
+  ...
+]
+Séances sans durée ou sans RPE doivent être omises par le script (charge non calculable).
+*/
+
+/* ---------- calculs ---------- */
+function toDate(s){ return new Date(s + "T00:00:00"); }
+function daysBetween(a,b){ return Math.round((b-a)/86400000); }
+
+function computeDailyCharge(seances){
+  // agrège la charge par jour (une journée peut avoir plusieurs séances)
+  const byDay = {};
+  seances.forEach(s=>{
+    if(s.duree_min==null || s.rpe==null) return;
+    const charge = s.duree_min * s.rpe;
+    byDay[s.date] = (byDay[s.date]||0) + charge;
+  });
+  return byDay;
+}
+
+function buildDailySeries(byDay, startDate, endDate){
+  const out=[];
+  let d = toDate(startDate);
+  const end = toDate(endDate);
+  while(d<=end){
+    const key = d.toISOString().slice(0,10);
+    out.push({date:key, charge: byDay[key]||0, hasData: key in byDay});
+    d = new Date(d.getTime()+86400000);
+  }
+  return out;
+}
+
+function weeklySum(daily, endIdx, windowDays){
+  const start = Math.max(0, endIdx-windowDays+1);
+  let sum=0, count=0;
+  for(let i=start;i<=endIdx;i++){ sum+=daily[i].charge; if(daily[i].hasData) count++; }
+  return {sum, daysWithData:count};
+}
+
+function stdDev(arr){
+  const n=arr.length; if(n===0) return 0;
+  const mean = arr.reduce((a,b)=>a+b,0)/n;
+  const variance = arr.reduce((a,b)=>a+(b-mean)*(b-mean),0)/n;
+  return Math.sqrt(variance);
+}
+
+// fenêtre d'analyse : 8 dernières semaines glissantes max (assez pour charge chronique 4 sem + affichage)
+const allDates = SEANCES.map(s=>s.date).filter(Boolean).sort();
+let acwrValue = null, acwrDaysAvailable = 0;
+let monotonyValue = null;
+let chargeLast7 = 0, chargeSeasonAvg = 0;
+let dailySeries = [];
+let weeklyChargeSeries = []; // pour le bar chart
+let acwrSeries = []; // {date, value}
+let monotonySeries = []; // {weekLabel, value}
+
+if(allDates.length > 0){
+  const byDay = computeDailyCharge(SEANCES);
+  const first = allDates[0];
+  const today = allDates[allDates.length-1];
+  dailySeries = buildDailySeries(byDay, first, today);
+
+  // charge 7 derniers jours
+  const last7 = dailySeries.slice(-7);
+  chargeLast7 = Math.round(last7.reduce((a,b)=>a+b.charge,0));
+
+  // moyenne saison (toutes semaines complètes disponibles)
+  const totalDays = dailySeries.length;
+  chargeSeasonAvg = totalDays>0 ? Math.round(dailySeries.reduce((a,b)=>a+b.charge,0) / totalDays * 7) : 0;
+
+  // ACWR glissant jour par jour : nécessite 28 jours de données AVANT le jour courant
+  for(let i=6;i<dailySeries.length;i++){
+    const acuteWindow = weeklySum(dailySeries, i, 7);
+    const chronicStart = i-27;
+    if(chronicStart < 0) continue; // pas assez d'historique
+    let chronicSum=0, chronicDaysWithData=0;
+    for(let j=chronicStart;j<=i;j++){ chronicSum+=dailySeries[j].charge; if(dailySeries[j].hasData) chronicDaysWithData++; }
+    if(chronicDaysWithData < 20) continue; // échantillon trop troué (seuil pragmatique)
+    const chronicAvgWeek = chronicSum/4;
+    if(chronicAvgWeek<=0) continue;
+    const ratio = acuteWindow.sum / chronicAvgWeek;
+    acwrSeries.push({date: dailySeries[i].date, value: Math.round(ratio*100)/100});
+  }
+  if(acwrSeries.length>0){
+    acwrValue = acwrSeries[acwrSeries.length-1].value;
+    acwrDaysAvailable = 28; // seuil atteint
+  } else {
+    // combien de jours il manque
+    acwrDaysAvailable = dailySeries.filter(d=>d.hasData).length;
+  }
+
+  // monotonie en fenêtre glissante 7j (cohérent avec l'ACWR glissant)
+  // adaptation de Foster (1998) : formule identique (moyenne quotidienne / écart-type),
+  // mais recalculée chaque jour plutôt qu'en semaine civile fixe
+  for(let i=6;i<dailySeries.length;i++){
+    const window = dailySeries.slice(i-6, i+1);
+    const daysWithData = window.filter(d=>d.hasData).length;
+    if(daysWithData < 6) continue; // fenêtre trop trouée, pas fiable
+    const vals = window.map(d=>d.charge);
+    const mean = vals.reduce((a,b)=>a+b,0)/vals.length;
+    const sd = stdDev(vals);
+    const mono = sd>0 ? mean/sd : null;
+    if(mono!==null){
+      monotonySeries.push({date: dailySeries[i].date, value:Math.round(mono*100)/100});
+    }
+  }
+  if(monotonySeries.length>0){
+    monotonyValue = monotonySeries[monotonySeries.length-1].value;
+  }
+
+  // charge hebdo pour le bar chart : on garde un regroupement calendaire ici,
+  // uniquement pour la lisibilité visuelle des barres (pas un calcul d'indicateur)
+  const weekMap = {};
+  dailySeries.forEach(d=>{
+    const dt = toDate(d.date);
+    const day = (dt.getDay()+6)%7;
+    const monday = new Date(dt.getTime() - day*86400000);
+    const wk = monday.toISOString().slice(0,10);
+    if(!weekMap[wk]) weekMap[wk]=[];
+    weekMap[wk].push(d.charge);
+  });
+  Object.keys(weekMap).sort().forEach(wk=>{
+    const vals = weekMap[wk];
+    weeklyChargeSeries.push({week:wk, total: Math.round(vals.reduce((a,b)=>a+b,0))});
+  });
+}
+
+/* ---------- rendu bandeau ---------- */
+function classify(val, thresholds){
+  // thresholds: {low, targetMax, warnMax}
+  if(val < thresholds.low) return 'low';
+  if(val <= thresholds.targetMax) return 'ok';
+  if(val <= thresholds.warnMax) return 'warn';
+  return 'danger';
+}
+
+const chargeCell = document.querySelectorAll('.status-cell')[0];
+chargeCell.querySelector('.value').innerHTML = `${chargeLast7} <small>UA</small>`;
+chargeCell.querySelector('.pill').className = 'pill neutral';
+chargeCell.querySelector('.pill').textContent = `Moy. saison : ${chargeSeasonAvg} UA/sem`;
+
+const acwrCell = document.querySelectorAll('.status-cell')[1];
+if(acwrValue===null){
+  acwrCell.querySelector('.value').innerHTML = `<span style="font-size:15px;color:var(--muted);">Données insuffisantes</span>`;
+  acwrCell.querySelector('.pill').className = 'pill neutral';
+  acwrCell.querySelector('.pill').textContent = `${acwrDaysAvailable}/28 j nécessaires`;
+} else {
+  acwrCell.querySelector('.value').innerHTML = `${acwrValue.toFixed(2)}`;
+  const cls = classify(acwrValue, {low:0.8, targetMax:1.3, warnMax:1.5});
+  const pill = acwrCell.querySelector('.pill');
+  pill.className = 'pill '+cls;
+  pill.textContent = cls==='ok' ? '达标' : cls==='low' ? '训练量偏低' : cls==='warn' ? '需要关注' : '风险较高';
+}
+
+const monoCell = document.querySelectorAll('.status-cell')[2];
+if(monotonyValue===null){
+  monoCell.querySelector('.value').innerHTML = `<span style="font-size:15px;color:var(--muted);">Données insuffisantes</span>`;
+  monoCell.querySelector('.pill').className = 'pill neutral';
+  monoCell.querySelector('.pill').textContent = '本周数据不完整';
+} else {
+  monoCell.querySelector('.value').innerHTML = `${monotonyValue.toFixed(2)}`;
+  const cls = classify(monotonyValue, {low:-Infinity, targetMax:1.5, warnMax:2});
+  const pill = monoCell.querySelector('.pill');
+  pill.className = 'pill '+cls;
+  pill.textContent = cls==='ok' ? '正常' : cls==='warn' ? '偏高' : '高于Foster阈值';
+}
+
+/* ---------- SVG helpers ---------- */
+function svgEl(tag, attrs){
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  for(const k in attrs) el.setAttribute(k, attrs[k]);
+  return el;
+}
+
+function renderBarChart(container, data, opts){
+  if(data.length===0){
+    container.innerHTML = '<div class="insufficient">Pas encore de données de charge exploitables (durée + RPE requis).</div>';
+    return;
+  }
+  const W=900, H=220, padL=44, padR=10, padT=10, padB=28;
+  const innerW = W-padL-padR, innerH = H-padT-padB;
+  const maxVal = Math.max(...data.map(d=>d.total), 1) * 1.15;
+  const barW = innerW/data.length*0.62;
+  const svg = svgEl('svg',{viewBox:`0 0 ${W} ${H}`});
+
+  // axes
+  [0,0.25,0.5,0.75,1].forEach(f=>{
+    const y = padT+innerH*(1-f);
+    svg.appendChild(svgEl('line',{x1:padL,x2:W-padR,y1:y,y2:y,stroke:'#2e323b','stroke-width':1}));
+    const t = svgEl('text',{x:padL-6,y:y+3,'text-anchor':'end','font-size':9,fill:'#8b8779','font-family':'monospace'});
+    t.textContent = Math.round(maxVal*f);
+    svg.appendChild(t);
+  });
+
+  data.forEach((d,i)=>{
+    const x = padL + innerW*(i+0.5)/data.length - barW/2;
+    const h = innerH*(d.total/maxVal);
+    const y = padT+innerH-h;
+    svg.appendChild(svgEl('rect',{x,y,width:barW,height:h,fill:'#5fae94',rx:1}));
+    const lbl = svgEl('text',{x:x+barW/2,y:H-8,'text-anchor':'middle','font-size':8.5,fill:'#8b8779','font-family':'monospace'});
+    lbl.textContent = d.week.slice(5);
+    svg.appendChild(lbl);
+  });
+  container.appendChild(svg);
+}
+
+function renderLineChartWithBands(container, series, opts){
+  if(series.length===0){
+    container.innerHTML = `<div class="insufficient">${opts.insufficientText}</div>`;
+    return;
+  }
+  const W=900, H=240, padL=44, padR=10, padT=14, padB=28;
+  const innerW=W-padL-padR, innerH=H-padT-padB;
+  const yMax = opts.yMax;
+  const svg = svgEl('svg',{viewBox:`0 0 ${W} ${H}`});
+
+  function yPos(v){ return padT + innerH*(1 - Math.min(v,yMax)/yMax); }
+  function xPos(i){ return padL + innerW*(i/(series.length-1||1)); }
+
+  // bandes de seuil
+  opts.bands.forEach(b=>{
+    const y1 = yPos(b.to), y2 = yPos(b.from);
+    svg.appendChild(svgEl('rect',{x:padL,y:y1,width:innerW,height:Math.max(0,y2-y1),fill:b.color,opacity:0.55}));
+  });
+
+  // grille + labels Y
+  for(let v=0; v<=yMax; v+=opts.yStep){
+    const y = yPos(v);
+    svg.appendChild(svgEl('line',{x1:padL,x2:W-padR,y1:y,y2:y,stroke:'#3a3e47','stroke-width':0.6,'stroke-dasharray':'2,3'}));
+    const t = svgEl('text',{x:padL-6,y:y+3,'text-anchor':'end','font-size':9,fill:'#8b8779','font-family':'monospace'});
+    t.textContent = v;
+    svg.appendChild(t);
+  }
+
+  // courbe
+  let pathD = '';
+  series.forEach((pt,i)=>{
+    const x=xPos(i), y=yPos(pt.value);
+    pathD += (i===0?'M':'L')+x+','+y+' ';
+  });
+  svg.appendChild(svgEl('path',{d:pathD, fill:'none', stroke:'#e8e6df','stroke-width':2}));
+
+  series.forEach((pt,i)=>{
+    const x=xPos(i), y=yPos(pt.value);
+    svg.appendChild(svgEl('circle',{cx:x,cy:y,r:3,fill:'#e8e6df'}));
+  });
+
+  // labels X (un sur deux si trop dense)
+  const step = series.length>14 ? Math.ceil(series.length/14) : 1;
+  series.forEach((pt,i)=>{
+    if(i%step!==0) return;
+    const x=xPos(i);
+    const t = svgEl('text',{x,y:H-8,'text-anchor':'middle','font-size':8,fill:'#8b8779','font-family':'monospace'});
+    t.textContent = (pt.date||pt.week||'').slice(5);
+    svg.appendChild(t);
+  });
+
+  container.appendChild(svg);
+}
+
+/* ---------- rendu graphiques ---------- */
+renderBarChart(document.getElementById('chart-charge'), weeklyChargeSeries, {});
+
+renderLineChartWithBands(document.getElementById('chart-acwr'), acwrSeries, {
+  yMax: 2, yStep: 0.5,
+  bands: [
+    {from:0, to:0.8, color:'#1e2a38'},
+    {from:0.8, to:1.3, color:'#1f332c'},
+    {from:1.3, to:1.5, color:'#3a2f1a'},
+    {from:1.5, to:2, color:'#3a221d'}
+  ],
+  insufficientText: `数据不足 —— 目前有 {v}/28 天完整数据，需累积4周完整数据才能计算此指标。`
+});
+
+renderLineChartWithBands(document.getElementById('chart-monotony'), monotonySeries, {
+  yMax: 3, yStep: 0.5,
+  bands: [
+    {from:0, to:1.5, color:'#1f332c'},
+    {from:1.5, to:2, color:'#3a2f1a'},
+    {from:2, to:3, color:'#3a221d'}
+  ],
+  insufficientText: '数据不足 —— 需要近7天中至少6天有完整训练记录。'
+});
+</script>
+</body>
+</html>
