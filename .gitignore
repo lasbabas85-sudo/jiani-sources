@@ -32,3 +32,5 @@ venv/
 # Node (si GitHub Actions futures)
 node_modules/
 package-lock.json
+scripts/dashboard_charge_en.html
+scripts/dashboard_charge_zh.html
