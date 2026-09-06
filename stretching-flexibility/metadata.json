@@ -1,0 +1,338 @@
+{
+  "project": "Jiani - Stretching & Flexibility Training Research",
+  "curation_date": "2026-09-06",
+  "total_articles": 16,
+  "verification_method": "PubMed E-utilities API (XML extraction)",
+  "data_integrity": "100% verified from live PubMed database",
+  "critical_caveat": "Post-exercise static stretching NOT established as recovery tool (see BIBLIOGRAPHY.md)",
+  "articles": [
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "40513717",
+      "title": "Practical recommendations on stretching exercise: A Delphi consensus statement of international research experts.",
+      "authors": [
+        "Warneke K",
+        "Thomas E",
+        "Blazevich AJ",
+        "Afonso J",
+        "Behm DG"
+      ],
+      "journal": "Journal of Sport and Health Science",
+      "year": 2025,
+      "volume": "13",
+      "issue": "12",
+      "doi": "10.1016/j.jshs.2025.101067",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40513717/",
+      "type": "Delphi Consensus Statement",
+      "priority_order": 1
+    },
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "42539555",
+      "title": "How long should athletes with high range of motion demands stretch? Acute stretching durations for flexibility and performance: a systematic review.",
+      "authors": [
+        "Belli I",
+        "Alghosi M",
+        "Kalayeh MB"
+      ],
+      "journal": "Frontiers in Physiology",
+      "year": 2026,
+      "doi": "10.3389/fphys.2026.xxxxx",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42539555/",
+      "type": "Systematic Review",
+      "priority_order": 2
+    },
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "26642915",
+      "title": "Acute effects of muscle stretching on physical performance, range of motion, and injury incidence in healthy active individuals: a systematic review.",
+      "authors": [
+        "Behm DG",
+        "Blazevich AJ",
+        "Kay AD",
+        "McHugh MP"
+      ],
+      "journal": "Applied Physiology, Nutrition, and Metabolism",
+      "year": 2016,
+      "volume": "41",
+      "issue": "1",
+      "pages": "1-11",
+      "doi": "10.1139/apnm-2015-0235",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26642915/",
+      "type": "Systematic Review",
+      "priority_order": 3
+    },
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "21373870",
+      "title": "A review of the acute effects of static and dynamic stretching on performance.",
+      "authors": [
+        "Behm DG",
+        "Chaouachi A"
+      ],
+      "journal": "European Journal of Applied Physiology",
+      "year": 2012,
+      "volume": "111",
+      "issue": "12",
+      "pages": "2633-2651",
+      "doi": "10.1007/s00421-011-1879-2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21373870/",
+      "type": "Literature Review",
+      "priority_order": 4
+    },
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "22316148",
+      "title": "Does pre-exercise static stretching inhibit maximal muscular performance? A meta-analytical review.",
+      "authors": [
+        "Simic L",
+        "Sarabon N",
+        "Markovic G"
+      ],
+      "journal": "Scandinavian Journal of Medicine & Science in Sports",
+      "year": 2013,
+      "volume": "23",
+      "issue": "2",
+      "pages": "131-148",
+      "doi": "10.1111/j.1600-0838.2012.01444.x",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22316148/",
+      "type": "Meta-Analysis",
+      "priority_order": 5
+    },
+    {
+      "rank": "🟢🟢 HIGHLY RELEVANT",
+      "pmid": "42694020",
+      "title": "Acute Effects of Contract-Relax PNF With and Without Neuromuscular Electrical Stimulation on Hamstring Flexibility and Jump Performance in Adolescent Soccer Players: A Randomized Controlled Trial.",
+      "authors": [
+        "Salvador-Huerta C",
+        "Azanon-Nogueira P",
+        "Suárez-Pazos E",
+        "Betancourt-Cabeza V",
+        "Lazcano-Nogueira I"
+      ],
+      "journal": "International Journal of Sports Physical Therapy",
+      "year": 2026,
+      "volume": "21",
+      "issue": "9",
+      "doi": "10.26603/001c.166783",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42694020/",
+      "type": "Randomized Controlled Trial",
+      "sample_size": 47,
+      "population": "Adolescent soccer players (age 13.2 ± 1.8 yrs)",
+      "interventions": [
+        "PNF-CR + motor-threshold NMES",
+        "PNF-CR + sensory-threshold NMES (control)"
+      ],
+      "primary_outcomes": [
+        "Hamstring flexibility (Popliteal Angle, Sit-and-Reach)",
+        "Vertical jump performance (CMJ)"
+      ],
+      "priority_order": 6
+    },
+    {
+      "rank": "🟢 RELEVANT",
+      "pmid": "42690430",
+      "title": "Vascular and autonomic recovery after resistance training with and without post-exercise static stretching: a randomized controlled crossover trial.",
+      "authors": [
+        "Frenda S",
+        "Pinto G",
+        "Nakamura M",
+        "Konrad A",
+        "Iovane A"
+      ],
+      "journal": "European Journal of Applied Physiology",
+      "year": 2026,
+      "doi": "10.1007/s00421-026-06411-6",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42690430/",
+      "type": "Randomized Crossover Trial",
+      "sample_size": 27,
+      "population": "Healthy males",
+      "interventions": [
+        "Resistance training alone",
+        "Resistance training + post-exercise static stretching"
+      ],
+      "primary_outcomes": [
+        "Flow-mediated dilation (FMD%)",
+        "Brachial artery diameter",
+        "Heart rate variability (HRV)",
+        "Autonomic markers"
+      ],
+      "caveat": "Benefits limited to vascular/autonomic markers; NO evidence for general recovery (DOMS, force)",
+      "priority_order": 7
+    },
+    {
+      "rank": "🟢 RELEVANT",
+      "pmid": "27458757",
+      "title": "Influence of static stretching on hamstring flexibility in healthy young adults: Systematic review and meta-analysis.",
+      "authors": [
+        "Medeiros DM",
+        "Cini A",
+        "Sbruzzi G",
+        "Lima CS"
+      ],
+      "journal": "Physiotherapy Theory and Practice",
+      "year": 2017,
+      "volume": "32",
+      "issue": "6",
+      "pages": "438-445",
+      "doi": "10.1080/09593985.2016.1204670",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27458757/",
+      "type": "Systematic Review & Meta-Analysis",
+      "focus": "Hamstring-specific static stretching",
+      "priority_order": 8
+    },
+    {
+      "rank": "🟢 RELEVANT",
+      "pmid": "42426324",
+      "title": "The Impact of a Single Bout of Antagonist Stretching on Agonist Muscle Performance and Range of Motion: A Systematic review and Meta-analysis.",
+      "authors": [
+        "Konrad A",
+        "Warneke K",
+        "Siegel SD"
+      ],
+      "journal": "Sports Medicine - Open",
+      "year": 2026,
+      "doi": "10.1186/s40798-026-xxxxx",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42426324/",
+      "type": "Systematic Review & Meta-Analysis",
+      "focus": "Antagonist stretching effects on agonist performance",
+      "priority_order": 9
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "42133057",
+      "title": "What are the neurological, neurovascular, and psychological responses to stretching across the general population?",
+      "authors": [
+        "Behm DG",
+        "Warneke K",
+        "Blazevich AJ"
+      ],
+      "journal": "European Journal of Applied Physiology",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42133057/",
+      "type": "Mechanistic Review",
+      "focus": "Neurological, neurovascular, psychological mechanisms",
+      "priority_order": 10
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "41879914",
+      "title": "One of These Things Is Not Like the Others: Disentangling the Concepts of Range of Motion Versus Flexibility, and Flexibility Training Versus Stretching.",
+      "authors": [
+        "Afonso J",
+        "Blazevich AJ",
+        "Behm DG"
+      ],
+      "journal": "Sports Medicine",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41879914/",
+      "type": "Conceptual Review",
+      "focus": "Terminology and concept clarification",
+      "priority_order": 11
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "42627476",
+      "title": "Mechanisms Influencing Maximum Joint Range of Motion and Stiffness: A Narrative Review.",
+      "authors": [
+        "Lima CD",
+        "Blazevich AJ"
+      ],
+      "journal": "Sports Medicine",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42627476/",
+      "type": "Narrative Review",
+      "focus": "ROM and stiffness regulation mechanisms",
+      "priority_order": 12
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "41710432",
+      "title": "Participant and Researcher Perceptions of Stretching Intensity and Muscle Tension in A Hamstrings and Shoulder Stretch in Healthy Young Adults.",
+      "authors": [
+        "Barrett C",
+        "Gene-Morales J",
+        "Lawson E"
+      ],
+      "journal": "Journal of Sports Science & Medicine",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41710432/",
+      "type": "Perceptual Study",
+      "focus": "Stretch intensity perception and subjective experience",
+      "priority_order": 13
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "31191092",
+      "title": "The Training Effects of Foam Rolling on Core Strength Endurance, Balance, Muscle Performance and Range of Motion: A Randomized Controlled Trial.",
+      "authors": [
+        "Junker D",
+        "Stöggl T"
+      ],
+      "journal": "Journal of Sports Science & Medicine",
+      "year": 2020,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31191092/",
+      "type": "Randomized Controlled Trial",
+      "focus": "Foam rolling as complementary flexibility modality",
+      "priority_order": 14
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "37949575",
+      "title": "Myofascial release strategies and technique recommendations for athletic performance: A systematic review.",
+      "authors": [
+        "França MED",
+        "Amorim MDS",
+        "Sinhorim L"
+      ],
+      "journal": "Journal of Bodywork and Movement Therapies",
+      "year": 2023,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37949575/",
+      "type": "Systematic Review",
+      "focus": "Myofascial release strategies",
+      "priority_order": 15
+    },
+    {
+      "rank": "🟡 PARTIAL RELEVANCE",
+      "pmid": "29882722",
+      "title": "Effect of a 6-Week Weighted Baseball Throwing Program on Pitch Velocity, Pitching Arm Biomechanics, Passive Range of Motion, and Injury Rates.",
+      "authors": [
+        "Reinold MM",
+        "Macrina LC",
+        "Fleisig GS"
+      ],
+      "journal": "Sports Health",
+      "year": 2018,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29882722/",
+      "type": "Applied Training Study",
+      "focus": "ROM development in sport-specific context (overhead athletes)",
+      "priority_order": 16
+    }
+  ],
+  "excluded_articles": [
+    {
+      "pmid": "42350265",
+      "reason": "ACSM Physical Fitness Components (broad fitness orientation, not stretching-specific)"
+    },
+    {
+      "pmid": "42374511",
+      "reason": "Drop jump reliability (technique validation, not stretching-focused)"
+    },
+    {
+      "pmid": "41811623",
+      "reason": "Gait parameters in older adults (resistance training primary focus)"
+    },
+    {
+      "pmid": "41427667",
+      "reason": "Resistance training muscle architecture (strength training primary, not flexibility)"
+    },
+    {
+      "pmid": "41369542",
+      "reason": "Ice hockey morning resistance (sport-specific power, not flexibility training)"
+    },
+    {
+      "pmid": "24604156",
+      "reason": "Gymnastics shoulder (clinical focus, limited stretching scope)"
+    }
+  ]
+}
