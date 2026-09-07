@@ -1,0 +1,76 @@
+{
+  "type": "book",
+  "id": "pradet-preparation-physique-2012",
+  "title": "La Préparation Physique",
+  "authors": [
+    "Michel PRADET"
+  ],
+  "illustrators": [
+    "Jean-Louis HUBICHE"
+  ],
+  "publisher": "INSEP-Publications",
+  "year_original": 1996,
+  "year_edition": 2012,
+  "isbn": "978-2-86580-200-5",
+  "language": "French",
+  "pages": 11255,
+  "format": "PDF (édition numérique)",
+  "categories": [
+    "Physique",
+    "Méthodologie de l'entraînement",
+    "Sciences de l'entraînement"
+  ],
+  "pertinence_jiani": "🟢🟢 HIGH",
+  "pertinence_jiani_code": "HIGH",
+  "summary": "Ouvrage de référence international intégrant physiologie, mécanique et méthodologie de l'entraînement autour des trois qualités physiques majeures: puissance, endurance, adresse.",
+  "key_chapters": [
+    {
+      "number": "II",
+      "title": "Systèmes énergétiques et mécanique musculaire",
+      "relevance": "Fondamentale — Comprendre ATP-CP, lactate, aérobie pour structurer entraînement"
+    },
+    {
+      "number": "IV",
+      "title": "Force et puissance",
+      "relevance": "Développement force réactive (service, accélération tennis)"
+    },
+    {
+      "number": "V",
+      "title": "Vitesse",
+      "relevance": "Temps de réaction, fréquence, déplacement — Appliqué tennis U14"
+    },
+    {
+      "number": "VI",
+      "title": "Endurance",
+      "relevance": "Structuration aérobie/anaérobie compatible calendrier compétitif"
+    },
+    {
+      "number": "VII-VIII",
+      "title": "Flexibilité et prévention",
+      "relevance": "ROM développement, échauffement, retour au calme"
+    }
+  ],
+  "applications_for_jiani": [
+    "Développement force réactive (explosivité service)",
+    "Travail vitesse et déplacement",
+    "Endurance anaérobie (rallyes courts haute intensité)",
+    "Flexibilité et prévention blessure",
+    "Méthodologie annuelle périodisée"
+  ],
+  "limitations": [
+    "Édition 2012 (original 1996) — Littérature récente manquante",
+    "Pas focus spécifique sport de raquette",
+    "Récupération post-effort peu développée (complémenter Frenda 2026, Delphi 2025)"
+  ],
+  "related_sources": [
+    "stretching-flexibility/",
+    "periodization-youth-athletes/",
+    "athletic-assessment-integration/"
+  ],
+  "date_added": "2026-09-06",
+  "source_url": "https://www.insep-publications.fr",
+  "access_level": "book",
+  "verified": true,
+  "verification_method": "PDF extraction + content validation",
+  "notes": "Référence fondamentale pour approche scientifique entraînement. À utiliser avec littérature récente 2020+ pour compléments neuroadaptation jeune athlète et stratégies récupération."
+}
