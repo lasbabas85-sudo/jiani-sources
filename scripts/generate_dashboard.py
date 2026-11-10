@@ -23,7 +23,7 @@ from datetime import datetime, timezone
 # CONFIGURATION — à adapter si besoin
 # ---------------------------------------------------------------------------
 NOTION_TOKEN = os.environ.get("NOTION_TOKEN", "") or os.environ.get("NOTION_API_TOKEN", "")
-SEANCES_DATA_SOURCE_ID = "3824293d-742f-8084-945c-000b885a1b37"
+SEANCES_DATA_SOURCE_ID = "3d24293d-742f-8191-8dd4-000ba935fb0a"
 
 # Chemin du template (généré par Claude, à copier une fois sur le serveur)
 TEMPLATE_PATH = "/opt/data/scripts/dashboard_charge_v2_template.html"
@@ -39,6 +39,7 @@ OUTPUT_FILES = {
 }
 
 NOTION_API_VERSION = "2025-09-03"
+SEASON_START = "2026-09-10"  # reprise de saison (inclus), calculs de charge uniquement
 NOTION_QUERY_URL = f"https://api.notion.com/v1/data_sources/{SEANCES_DATA_SOURCE_ID}/query"
 
 # ---------------------------------------------------------------------------
@@ -215,15 +216,15 @@ def fetch_seances():
         for page in data.get("results", []):
             props = page.get("properties", {})
 
-            date_prop = props.get("dates", {}).get("date")
+            date_prop = props.get("Date", {}).get("date")
             if not date_prop:
                 continue  # pas de date exploitable, on ignore la ligne
 
-            duree_prop = props.get("Durée séance (min)", {}).get("number")
-            rpe_prop = props.get("Intensité perçue (joueuse)", {}).get("number")
+            duree_prop = props.get("Session duration (min)", {}).get("number")
+            rpe_prop = props.get("Perceived difficulty", {}).get("number")
 
-            zone_select = props.get("Zone alerte", {}).get("select")
-            type_select = props.get("Type alerte", {}).get("select")
+            zone_select = props.get("Alert zone", {}).get("select")
+            type_select = props.get("Alert type", {}).get("select")
 
             entries.append({
                 "date": date_prop.get("start", "")[:10],
@@ -240,11 +241,19 @@ def fetch_seances():
 
 
 def filter_seances_for_charge(entries):
-    """Ne garde que les entrées exploitables pour le calcul de charge (durée + RPE)."""
+    """Ne garde que les entrées exploitables pour le calcul de charge (durée + RPE).
+    Inclut aussi zone_alerte et type_alerte si présents."""
     return [
-        {"date": e["date"], "duree_min": e["duree_min"], "rpe": e["rpe"]}
+        {
+            "date": e["date"],
+            "duree_min": e["duree_min"],
+            "rpe": e["rpe"],
+            "zone_alerte": e.get("zone_alerte"),
+            "type_alerte": e.get("type_alerte")
+        }
         for e in entries
         if e["duree_min"] is not None and e["rpe"] is not None
+        and e["date"] >= SEASON_START
     ]
 
 
@@ -277,6 +286,65 @@ def compute_alert_status(entries):
         "type": last["type_alerte"],
         "since": since_date,
     }
+
+
+
+
+def build_alerts_timeline(entries):
+    """Construit un historique des alertes groupées par (zone, type).
+    
+    Chaque combinaison zone+type est trackée séparément.
+    Retourne une liste d'objets: [{"date": "2026-09-17", "zone": "Ankle", "type": "Pain", "days_continuous": 4, "color": "danger"}, ...]
+    """
+    from datetime import datetime as dt
+    
+    type_to_color = {
+        # Pain/Injury (danger)
+        "Douleur": "danger", "Pain": "danger", "Blessure": "danger", "Injury": "danger",
+        # Tension/Soreness/Discomfort (warn)
+        "Tension": "warn", "Tightness": "warn", "Courbature": "warn", "Soreness": "warn",
+        "Gêne": "warn", "Discomfort": "warn",
+    }
+    
+    # Filtre les alertes
+    dated = sorted([e for e in entries if e["date"] and (e.get("zone_alerte") or e.get("type_alerte"))],
+                   key=lambda e: e["date"])
+    if not dated:
+        return []
+    
+    # Groupe par (zone, type) et calcule la durée
+    alert_groups = {}
+    for e in dated:
+        zone = e.get("zone_alerte")
+        type_ = e.get("type_alerte")
+        key = (zone, type_)
+        
+        if key not in alert_groups:
+            alert_groups[key] = {
+                "start_date": e["date"],
+                "end_date": e["date"],
+                "count": 0
+            }
+        
+        alert_groups[key]["end_date"] = e["date"]
+        alert_groups[key]["count"] += 1
+    
+    # Convertit en liste d'alertes (une par groupe)
+    alerts_list = []
+    for (zone, type_), info in sorted(alert_groups.items(), key=lambda x: x[1]["start_date"]):
+        start = dt.fromisoformat(info["start_date"])
+        end = dt.fromisoformat(info["end_date"])
+        days = (end - start).days + 1
+        
+        alerts_list.append({
+            "date": info["start_date"],
+            "zone": zone,
+            "type": type_,
+            "color": type_to_color.get(type_, "neutral"),
+            "days_continuous": days
+        })
+    
+    return alerts_list
 
 
 def generate_html(entries, lang):
@@ -333,6 +401,9 @@ def generate_html(entries, lang):
         "monoInsufficient": t["mono_insufficient"],
     }
 
+    # Construire l'historique des alertes
+    alerts_timeline = build_alerts_timeline(entries)
+    
     html = template
     # Remplacements simples texte -> placeholder (dans l'ordre n'a pas d'importance)
     static_replacements = {
@@ -375,6 +446,7 @@ def generate_html(entries, lang):
         html = html.replace(placeholder, value)
 
     html = html.replace("{{SEANCES_JSON}}", seances_json)
+    html = html.replace("{{ALERTS_JSON}}", json.dumps(alerts_timeline, ensure_ascii=False))
     html = html.replace("{{LABELS_JSON}}", json.dumps(js_labels, ensure_ascii=False))
     html = html.replace("{{GENERATED_AT}}", now_str)
 

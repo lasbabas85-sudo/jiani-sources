@@ -153,6 +153,53 @@
   .range-btn.active{
     background:var(--accent-soft); border-color:var(--accent); color:var(--accent);
   }
+
+  /* ---- marqueurs d'alerte sur graphique ---- */
+  .alert-marker{
+    position:absolute;
+    width:8px; height:8px; border-radius:50%;
+    top:-12px;
+    font-size:9px; font-weight:700;
+  }
+  .alert-marker.danger{background:#e0705a;}
+  .alert-marker.warn{background:#d9a54f;}
+  .alert-marker.neutral{background:#8b8779;}
+  
+  /* ---- tableau alertes timeline ---- */
+  .alerts-table{
+    margin-top:28px;
+  }
+  .alerts-table h3{
+    font-size:13px; text-transform:uppercase; letter-spacing:.05em;
+    margin:0 0 12px; font-weight:700;
+    color:var(--ink);
+  }
+  .alerts-table table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+    font-family:var(--mono-font);
+  }
+  .alerts-table th{
+    text-align:left; padding:8px 12px; border-bottom:1px solid var(--line);
+    color:var(--muted); font-weight:600; text-transform:uppercase; font-size:10px;
+  }
+  .alerts-table td{
+    padding:10px 12px; border-bottom:1px solid var(--line);
+  }
+  .alerts-table .alert-type{
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .alerts-table .alert-dot{
+    width:6px; height:6px; border-radius:50%; flex-shrink:0;
+  }
+  .alerts-table .alert-dot.danger{background:#e0705a;}
+  .alerts-table .alert-dot.warn{background:#d9a54f;}
+  .alerts-empty{
+    color:var(--muted); font-size:12px; padding:16px;
+    background:var(--panel); border:1px solid var(--line);
+    text-align:center;
+  }
 </style>
 </head>
 <body>
@@ -202,6 +249,7 @@
     <h2>{{T_P1_H2}}</h2>
     <div class="caption">{{T_P1_CAPTION}}</div>
     <div id="chart-charge"></div>
+    <div id="alerts-timeline"></div>
     <div class="source">{{T_P1_SOURCE}}</div>
   </section>
 
@@ -240,10 +288,15 @@
 </div>
 
 <script>
+const ALERTS = {{ALERTS_JSON}};
+
 const SEANCES = {{SEANCES_JSON}};
 const LABELS = {{LABELS_JSON}};
 
-function toDate(s){ return new Date(s + "T00:00:00"); }
+function toDate(s){ 
+  const [y,m,d] = s.split('-').map(Number);
+  return new Date(Date.UTC(y, m-1, d));
+}
 function daysBetween(a,b){ return Math.round((b-a)/86400000); }
 
 function computeDailyCharge(seances){
@@ -263,7 +316,7 @@ function buildDailySeries(byDay, startDate, endDate){
   while(d<=end){
     const key = d.toISOString().slice(0,10);
     out.push({date:key, charge: byDay[key]||0, hasData: key in byDay});
-    d = new Date(d.getTime()+86400000);
+    d = new Date(d.getTime()+86400000);  // +1 day
   }
   return out;
 }
@@ -342,7 +395,9 @@ if(allDates.length > 0){
   const weekMap = {};
   dailySeries.forEach(d=>{
     const dt = toDate(d.date);
-    const day = (dt.getDay()+6)%7;
+    // Calcul du lundi : getDay() = dim(0), lun(1), mar(2)... sam(6)
+    // Pour obtenir lundi : soustraire (getDay() - 1), sauf si dimanche → soustraire 6
+    const day = dt.getDay() === 0 ? 6 : dt.getDay() - 1;
     const monday = new Date(dt.getTime() - day*86400000);
     const wk = monday.toISOString().slice(0,10);
     if(!weekMap[wk]) weekMap[wk]=[];
@@ -515,7 +570,7 @@ function renderAllCharts(rangeDays){
   document.getElementById('chart-acwr').innerHTML = '';
   document.getElementById('chart-monotony').innerHTML = '';
 
-  renderBarChart(document.getElementById('chart-charge'), chargeSeries, {});
+  renderBarChartWithAlerts(document.getElementById('chart-charge'), chargeSeries, ALERTS);
 
   renderLineChartWithBands(document.getElementById('chart-acwr'), acwrFiltered, {
     yMax: 2, yStep: 0.5,
@@ -552,6 +607,131 @@ rangeButtons.forEach(btn=>{
 const defaultBtn = document.querySelector('.range-btn[data-range="7"]');
 if(defaultBtn) defaultBtn.classList.add('active');
 renderAllCharts(7);
+renderAlertsTimeline(document.getElementById('alerts-timeline'), ALERTS);
+
+function renderBarChartWithAlerts(container, data, alerts){
+  if(data.length===0){
+    container.innerHTML = `<div class="insufficient">${LABELS.noChargeData}</div>`;
+    return;
+  }
+  
+  // Crée un index par semaine: pour chaque semaine (lundi), récupère les alertes qui tombent dans cette semaine
+  const alertsByWeek = {};
+  alerts.forEach(a => {
+    const alertDate = new Date(a.date);
+    // Trouve la semaine qui contient cette alerte
+    data.forEach(w => {
+      const weekStart = new Date(w.week);
+      const weekEnd = new Date(weekStart.getTime() + 6*86400000); // lundi + 6 jours = dimanche
+      if(alertDate >= weekStart && alertDate <= weekEnd){
+        if(!alertsByWeek[w.week]) alertsByWeek[w.week] = [];
+        alertsByWeek[w.week].push(a);
+      }
+    });
+  });
+  
+  const W=900, H=240, padL=44, padR=10, padT=10, padB=28;
+  const innerW = W-padL-padR, innerH = H-padT-padB;
+  const maxVal = Math.max(...data.map(d=>d.total), 1) * 1.15;
+  const barW = innerW/data.length*0.62;
+  const svg = svgEl('svg',{viewBox:`0 0 ${W} ${H}`});
+  
+  [0,0.25,0.5,0.75,1].forEach(f=>{
+    const y = padT+innerH*(1-f);
+    svg.appendChild(svgEl('line',{x1:padL,x2:W-padR,y1:y,y2:y,stroke:'#2e323b','stroke-width':1}));
+    const t = svgEl('text',{x:padL-6,y:y+3,'text-anchor':'end','font-size':9,fill:'#8b8779','font-family':'monospace'});
+    t.textContent = Math.round(maxVal*f);
+    svg.appendChild(t);
+  });
+  
+  data.forEach((d,i)=>{
+    const x = padL + innerW*(i+0.5)/data.length - barW/2;
+    const h = innerH*(d.total/maxVal);
+    const y = padT+innerH-h;
+    svg.appendChild(svgEl('rect',{x,y,width:barW,height:h,fill:'#5fae94',rx:1}));
+    
+    // Si la semaine contient des alertes, affiche un marqueur pour chacune
+    const weekAlerts = alertsByWeek[d.week] || [];
+    if(weekAlerts.length > 0){
+      weekAlerts.forEach((alert, idx) => {
+        const colors = {danger:'#dc2626', warn:'#f59e0b', neutral:'#8b8779'};
+        const markerColor = colors[alert.color] || colors.neutral;
+        svg.appendChild(svgEl('circle',{
+          cx:x+barW-4-idx*8, cy:y-6, r:4,
+          fill:markerColor, stroke:markerColor, 'stroke-width':1
+        }));
+      });
+    }
+    
+    const lbl = svgEl('text',{x:x+barW/2,y:H-8,'text-anchor':'middle','font-size':8.5,fill:'#8b8779','font-family':'monospace'});
+    lbl.textContent = d.week.slice(5);
+    svg.appendChild(lbl);
+  });
+  
+  const wrapper = document.createElement('div');
+  wrapper.style.position = 'relative';
+  wrapper.appendChild(svg);
+  container.appendChild(wrapper);
+}
+
+function renderAlertsTimeline(container, alerts){
+  if(!alerts || alerts.length === 0){
+    container.innerHTML = '<div class="alerts-empty">No physical alerts recorded</div>';
+    return;
+  }
+  
+  const typeToLabel = {
+    "Douleur": "Pain", "Pain": "Pain", "Blessure": "Injury",
+    "Tension": "Tightness", "Tightness": "Tightness",
+    "Courbature": "Soreness", "Gêne": "Discomfort"
+  };
+  
+  let html = `
+    <div class="alerts-table">
+      <h3>Alert History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Zone</th>
+            <th>Type</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+  
+  alerts.forEach(a => {
+    const typeLabel = typeToLabel[a.type] || a.type || '—';
+    const zoneLabel = a.zone || '—';
+    const colorClass = a.color || 'neutral';
+    const daysLabel = a.days_continuous + (a.days_continuous > 1 ? ' days' : ' day');
+    
+    // Calcule la date de fin à partir de la date de départ + durée
+    const dateObj = new Date(a.date + 'T00:00:00Z');
+    const endDate = new Date(dateObj.getTime() + (a.days_continuous - 1) * 86400000);
+    
+    const dateStr = dateObj.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    const endStr = endDate.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+    
+    // Affiche la plage complète si durée > 1 jour
+    const dateRange = a.days_continuous > 1 ? `${dateStr} to ${endStr}` : dateStr;
+    
+    html += `
+      <tr>
+        <td>${dateRange}</td>
+        <td>${zoneLabel}</td>
+        <td><div class="alert-type"><span class="alert-dot ${colorClass}"></span>${typeLabel}</div></td>
+        <td>${daysLabel}</td>
+      </tr>
+    `;
+  });
+  
+  html += `</tbody></table></div>`;
+  container.innerHTML = html;
+}
+
+
 </script>
 </body>
 </html>
