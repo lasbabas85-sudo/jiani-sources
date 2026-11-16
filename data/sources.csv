@@ -45,78 +45,78 @@ PMID,Type,Sujet,DOI,URL,Pertinence_Jiani,Note_détail,Verification_date,PDF_path
 41618909,PMID,,,https://pubmed.ncbi.nlm.nih.gov/41618909/,🟡 PARTIEL,,2026-08-13,
 41804829,PMID,non pertinent Jiani saine,,https://pubmed.ncbi.nlm.nih.gov/41804829/,🔴 NON,non pertinent Jiani saine,2026-08-13,
 41891949,PMID,Jiani active,,https://pubmed.ncbi.nlm.nih.gov/41891949/,🔴 NON,Jiani active,2026-08-13,
-CSSR-023,CSSR,Blessures jeunes joueurs + prévention = CRITIQUE pour Jiani intensive,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-024,CSSR,Charge entraînement jeunes = OUI; Jiani U14 compétitive = pertinent,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-025,CSSR,Traits comportementaux jeunes compétiteurs = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-026,CSSR,"Routines de compétition, récupération — pertinent Jiani",,,🟢🟢 HIGH,,2026-08-13,
-CSSR-027,CSSR,Retour service technique = OUI; mais contexte seniorité-focused,,,🟡 PARTIEL,,2026-08-13,
-CSSR-028,CSSR,VFC + variation physiologique jeunes = OUI TRÈS pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-029,CSSR,Développement technique enfants; Jiani = avancée technique,,,🟡 PARTIEL,,2026-08-13,
-CSSR-030,CSSR,Étapes formation joueurs niveau mondial + visualisation + concentration = cœur du travail mental Jiani; prévention blessures + évaluation fonction = OUI,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-031,CSSR,Sommeil U14 + circuit training intensive = JIANI CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-032,CSSR,Complex training + préparation mentale utiles; technique débutants MAIS Jiani = expert déjà,,,🟡 PARTIEL,,2026-08-13,
-CSSR-033,CSSR,Sport development jeunes (général); peu spécifique Jiani,,,🟡 PARTIEL,,2026-08-13,
-CSSR-034,CSSR,Technologie sport; coaching moderne = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-035,CSSR,Périodisation jeunes compétiteurs + circuit junior ITF + vitesse/puissance jeunes + gestion stress matches = MATCH DIRECT OBJECTIFS JIANI,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-036,CSSR,Macrocycle planning competitif U14 = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-037,CSSR,Prévention blessures valgus = OUI TRÈS PERTINENT (Jiani valgus 5.1×),,,🟢🟢 HIGH,,2026-08-13,
-CSSR-038,CSSR,Endurance spécifique tennis + test progressif; sciences appliquées haut niveau jeunes = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-039,CSSR,Monographie détection talents + profils psychologiques champions; psychologie stress compétiteur = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-040,CSSR,Échauffement haut niveau pourrait être intéressant,,,🟡 PARTIEL,,2026-08-13,
-CSSR-041,CSSR,Tests fonctionnels + exercices correctifs = directement lié à correction valgus Jiani,,,🟡 PARTIEL,,2026-08-13,
-CSSR-042,CSSR,Play and Stay débutants = Jiani compétitrice haut niveau,,,🔴 NON,,2026-08-13,
-CSSR-043,CSSR,Entraînement intégré terrain = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-044,CSSR,Psychologie enfants compétition = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-045,CSSR,Technique coups fonds avancé = OUI; MAIS seniors-focused,,,🟡 PARTIEL,,2026-08-13,
-CSSR-046,CSSR,Préparation mentale jeunes élites = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-047,CSSR,Vibration + périodisation + régénération + prophylaxie = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-048,CSSR,Double jeunes; utilité = oui MAIS pas prioritaire Jiani,,,🟡 PARTIEL,,2026-08-13,
-CSSR-049,CSSR,Développement talent + pratique délibérée; analyse tactique match = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-050,CSSR,Apprentissage moteur jeunes + technique = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-051,CSSR,Tennis 10s + Play and Stay débutants U10 = Jiani compétitrice haut niveau (dépasse),,,🔴 NON,,2026-08-13,
-CSSR-052,CSSR,Perfectionnisme + mindset + stress = garder; psychologie jeunes = OUI MAIS débutants-focused,,,🟡 PARTIEL,,2026-08-13,
-CSSR-053,CSSR,Anxiété compétition jeunes = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-054,CSSR,Formation d'entraîneurs accréditation systèmes = administratif (non-pertinent Jiani),,,🔴 NON,,2026-08-13,
-CSSR-055,CSSR,Récupération jeune joueur + imagerie motrice service + top 100 progression = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-056,CSSR,Tactique haut niveau terre battue = OUI; MAIS contexte seniors-focused,,,🟡 PARTIEL,,2026-08-13,
-CSSR-057,CSSR,Récupération (partie 2) + parents implication + vitesse service fatigue = partiel,,,🟡 PARTIEL,,2026-08-13,
-CSSR-058,CSSR,TRX + obstacles mentaux; fatigue performance endurance force = pertinent MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,
-CSSR-059,CSSR,Tennis jeunes aperçu médical + talents détection + anxiety analyse = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-060,CSSR,Apprentissage moteur implicite + contraintes = OUI; MAIS fondamentaux généraux,,,🟡 PARTIEL,,2026-08-13,
-CSSR-061,CSSR,Gestion émotionnelle + prévention blessures unipodal + charge VFC + anxiété = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-062,CSSR,Technologie analyse + coup droit variation = OUI; MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,
-CSSR-063,CSSR,Récupération intensive jeunes = CRITICAL pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-064,CSSR,Caractéristiques physiologiques joueurs + retour service adaptation + trunk stabilité = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-065,CSSR,Confiance + humeur junior + compétences émotionnelles = garder; ⚠️ IGNORER coordination si <U10,,,🟡 PARTIEL,,2026-08-13,
-CSSR-066,CSSR,LTAD + plan de jeu utiles; développement long-terme athlète + glucose consommation = OUI MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,
-CSSR-067,CSSR,Résolution problèmes tennis + gestion émotionnelle entraîneur + communication jeunes = partiel,,,🟡 PARTIEL,,2026-08-13,
-CSSR-068,CSSR,Communication entraîneur-joueur + endurance spécifique tennis + transition junior-pro = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-069,CSSR,Bloc complet U10-U12 (vitesse/équilibre/force <12 ans) — hors tranche d'âge Jiani,,,🔴 NON,,2026-08-13,
-CSSR-070,CSSR,Pleine conscience + travail psychologues sport = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-071,CSSR,Évaluation condition physique utile; conditions physiques développement = OUI MAIS contexte professionnel,,,🟡 PARTIEL,,2026-08-13,
-CSSR-072,CSSR,Play and Stay 10e anniversaire = débutants; Jiani compétitrice,,,🔴 NON,,2026-08-13,
-CSSR-073,CSSR,Distance lancer service élite juniors + TrackMan + entraînement polarisé = data élite directe pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-074,CSSR,Calendrier compétition + morphofonctionnel juniors; apprentissage moteur + mémoire musculaire + technique = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-075,CSSR,Multi-sports + défaut d'alignement (lien valgus); gestion émotions + double jeunes + vidéo feedback = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-076,CSSR,Top 8 retour service utile; technologie résultats + coup droit technique = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-077,CSSR,Apprentissage moteur 3-4 ans (trop jeune); blessures junior = OUI partiel,,,🟡 PARTIEL,,2026-08-13,
-CSSR-078,CSSR,Perfectionnisme orienté autrui + commotion cérébrale + service technique = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-079,CSSR,Capacité aérobie tennis + langage corporel performance = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-080,CSSR,Charge entraînement quantification + mental skills + perception développement = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-081,CSSR,COVID-19 adaptatif; santé mentale pandémie = contexte 2020 (obsolète),,,🔴 NON,,2026-08-13,
-CSSR-082,CSSR,Chaîne cinétique fermée; test Sigma + position tête + routine préparation service = oui MAIS techno-focused,,,🟡 PARTIEL,,2026-08-13,
-CSSR-083,CSSR,Cinématique service jeunes vs pro; menaces matchs truqués + blessures ado filles + accélération latérale = utile,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-084,CSSR,Tactique constraints-based + mental coaching jeunes élites + multisports = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-085,CSSR,Focus 4-6 ans (trop jeune); Jiani U14 compétitrice dépasse ce niveau,,,🔴 NON,,2026-08-13,
-CSSR-086,CSSR,Périodisation force/cond. 6 sem. junior élite utile (ignorer Play&Stay U10); philosophie coaching = partiel,,,🟡 PARTIEL,,2026-08-13,
-CSSR-087,CSSR,Gestion clubs/administration = non-pertinent pour athlète,,,🔴 NON,,2026-08-13,
-CSSR-088,CSSR,Charge entraînement U15 élites + footwork + temps réaction + hydratation = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-089,CSSR,Apprentissage moteur (learn-move-compete) + HIIT + théories acquisition compétences = OUI,,,🟢🟢 HIGH,,2026-08-13,
-CSSR-090,CSSR,Gestion fédérations nationales/gouvernance = administratif non-pertinent Jiani athlète,,,🔴 NON,,2026-08-13,
-CSSR-091,CSSR,Biomécanique développement + parentalité joueur junior = oui MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,
-CSSR-092,CSSR,Séquences service sub-12/sub-14 = tranche d'âge exacte; muscles haut du corps + routine motivation mentale + performance + pathologies prevention = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
-CSSR-093,CSSR,Développement international/sociologie/gouvernance fédérations = administratif,,,🔴 NON,,2026-08-13,
-CSSR-094,CSSR,Muscles bas du corps + pleine conscience performance + HRV psychophysiologie + élite development bioécologie = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,
+CSSR-023,CSSR,Blessures jeunes joueurs + prévention = CRITIQUE pour Jiani intensive,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_23_FRE.pdf
+CSSR-024,CSSR,Charge entraînement jeunes = OUI; Jiani U14 compétitive = pertinent,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_24_FRE.pdf
+CSSR-025,CSSR,Traits comportementaux jeunes compétiteurs = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_25_FRE.pdf
+CSSR-026,CSSR,"Routines de compétition, récupération — pertinent Jiani",,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_26_FRE.pdf
+CSSR-027,CSSR,Retour service technique = OUI; mais contexte seniorité-focused,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_27_FRE.pdf
+CSSR-028,CSSR,VFC + variation physiologique jeunes = OUI TRÈS pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_28_FRE.pdf
+CSSR-029,CSSR,Développement technique enfants; Jiani = avancée technique,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181245_CSSR_29_FRE.pdf
+CSSR-030,CSSR,Étapes formation joueurs niveau mondial + visualisation + concentration = cœur du travail mental Jiani; prévention blessures + évaluation fonction = OUI,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_30_FRE.pdf
+CSSR-031,CSSR,Sommeil U14 + circuit training intensive = JIANI CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_31_FRE.pdf
+CSSR-032,CSSR,Complex training + préparation mentale utiles; technique débutants MAIS Jiani = expert déjà,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_32_FRE.pdf
+CSSR-033,CSSR,Sport development jeunes (général); peu spécifique Jiani,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_33_FRE.pdf
+CSSR-034,CSSR,Technologie sport; coaching moderne = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_34_FRE.pdf
+CSSR-035,CSSR,Périodisation jeunes compétiteurs + circuit junior ITF + vitesse/puissance jeunes + gestion stress matches = MATCH DIRECT OBJECTIFS JIANI,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_35_FRE.pdf
+CSSR-036,CSSR,Macrocycle planning competitif U14 = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_36_FRE.pdf
+CSSR-037,CSSR,Prévention blessures valgus = OUI TRÈS PERTINENT (Jiani valgus 5.1×),,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_37_FRE.pdf
+CSSR-038,CSSR,Endurance spécifique tennis + test progressif; sciences appliquées haut niveau jeunes = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181242_CSSR_38_FRE.pdf
+CSSR-039,CSSR,Monographie détection talents + profils psychologiques champions; psychologie stress compétiteur = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_39_FRE.pdf
+CSSR-040,CSSR,Échauffement haut niveau pourrait être intéressant,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_40_FRE.pdf
+CSSR-041,CSSR,Tests fonctionnels + exercices correctifs = directement lié à correction valgus Jiani,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_41_FRE.pdf
+CSSR-042,CSSR,Play and Stay débutants = Jiani compétitrice haut niveau,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_181245_CSSR_42_FRE.pdf
+CSSR-043,CSSR,Entraînement intégré terrain = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_43_FRE.pdf
+CSSR-044,CSSR,Psychologie enfants compétition = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_181243_CSSR_44_FRE.pdf
+CSSR-045,CSSR,Technique coups fonds avancé = OUI; MAIS seniors-focused,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_181244_CSSR_45_FRE.pdf
+CSSR-046,CSSR,Préparation mentale jeunes élites = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_184343_CSSR_46_FRE.pdf
+CSSR-047,CSSR,Vibration + périodisation + régénération + prophylaxie = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_184345_CSSR_47_FRE.pdf
+CSSR-048,CSSR,Double jeunes; utilité = oui MAIS pas prioritaire Jiani,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_184345_CSSR_48_FRE.pdf
+CSSR-049,CSSR,Développement talent + pratique délibérée; analyse tactique match = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_184345_CSSR_49_FRE.pdf
+CSSR-050,CSSR,Apprentissage moteur jeunes + technique = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_184344_CSSR_50_FRE.pdf
+CSSR-051,CSSR,Tennis 10s + Play and Stay débutants U10 = Jiani compétitrice haut niveau (dépasse),,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_191444_CSSR_51_FRE.pdf
+CSSR-052,CSSR,Perfectionnisme + mindset + stress = garder; psychologie jeunes = OUI MAIS débutants-focused,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191450_CSSR_52_FRE.pdf
+CSSR-053,CSSR,Anxiété compétition jeunes = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191446_CSSR_53_FRE.pdf
+CSSR-054,CSSR,Formation d'entraîneurs accréditation systèmes = administratif (non-pertinent Jiani),,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_191447_CSSR_54_FRE.pdf
+CSSR-055,CSSR,Récupération jeune joueur + imagerie motrice service + top 100 progression = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191451_CSSR_55_FRE.pdf
+CSSR-056,CSSR,Tactique haut niveau terre battue = OUI; MAIS contexte seniors-focused,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191450_CSSR_56_FRE.pdf
+CSSR-057,CSSR,Récupération (partie 2) + parents implication + vitesse service fatigue = partiel,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191451_CSSR_57_FRE.pdf
+CSSR-058,CSSR,TRX + obstacles mentaux; fatigue performance endurance force = pertinent MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191447_CSSR_58_FRE.pdf
+CSSR-059,CSSR,Tennis jeunes aperçu médical + talents détection + anxiety analyse = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191449_CSSR_59_FRE.pdf
+CSSR-060,CSSR,Apprentissage moteur implicite + contraintes = OUI; MAIS fondamentaux généraux,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191448_CSSR_60_FRE.pdf
+CSSR-061,CSSR,Gestion émotionnelle + prévention blessures unipodal + charge VFC + anxiété = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_191445_CSSR_61_FRE.pdf
+CSSR-062,CSSR,Technologie analyse + coup droit variation = OUI; MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191448_CSSR_62_FRE.pdf
+CSSR-063,CSSR,Récupération intensive jeunes = CRITICAL pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_191449_CSSR_63_FRE.pdf
+CSSR-064,CSSR,Caractéristiques physiologiques joueurs + retour service adaptation + trunk stabilité = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191448_CSSR_64_FRE.pdf
+CSSR-065,CSSR,Confiance + humeur junior + compétences émotionnelles = garder; ⚠️ IGNORER coordination si <U10,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191444_CSSR_65_FRE.pdf
+CSSR-066,CSSR,LTAD + plan de jeu utiles; développement long-terme athlète + glucose consommation = OUI MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191447_CSSR_66_FRE.pdf
+CSSR-067,CSSR,Résolution problèmes tennis + gestion émotionnelle entraîneur + communication jeunes = partiel,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191445_CSSR_67_FRE.pdf
+CSSR-068,CSSR,Communication entraîneur-joueur + endurance spécifique tennis + transition junior-pro = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191451_CSSR_68_FRE.pdf
+CSSR-069,CSSR,Bloc complet U10-U12 (vitesse/équilibre/force <12 ans) — hors tranche d'âge Jiani,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_191444_CSSR_69_FRE.pdf
+CSSR-070,CSSR,Pleine conscience + travail psychologues sport = OUI TRÈS,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191447_CSSR_70_FRE.pdf
+CSSR-071,CSSR,Évaluation condition physique utile; conditions physiques développement = OUI MAIS contexte professionnel,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_191444_CSSR_71_FRE.pdf
+CSSR-072,CSSR,Play and Stay 10e anniversaire = débutants; Jiani compétitrice,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_191450_CSSR_72_FRE.pdf
+CSSR-073,CSSR,Distance lancer service élite juniors + TrackMan + entraînement polarisé = data élite directe pour Jiani,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_191449_CSSR_73_FRE.pdf
+CSSR-074,CSSR,Calendrier compétition + morphofonctionnel juniors; apprentissage moteur + mémoire musculaire + technique = OUI TRÈS,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_191445_CSSR_74_FRE.pdf
+CSSR-075,CSSR,Multi-sports + défaut d'alignement (lien valgus); gestion émotions + double jeunes + vidéo feedback = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_191446_CSSR_75_FRE.pdf
+CSSR-076,CSSR,Top 8 retour service utile; technologie résultats + coup droit technique = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_201643_CSSR_76_FRE.pdf
+CSSR-077,CSSR,Apprentissage moteur 3-4 ans (trop jeune); blessures junior = OUI partiel,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_201645_CSSR_77_FRE.pdf
+CSSR-078,CSSR,Perfectionnisme orienté autrui + commotion cérébrale + service technique = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201652_CSSR_78_FRE.pdf
+CSSR-079,CSSR,Capacité aérobie tennis + langage corporel performance = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_201646_CSSR_79_FRE.pdf
+CSSR-080,CSSR,Charge entraînement quantification + mental skills + perception développement = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201658_CSSR_80_FRE.pdf
+CSSR-081,CSSR,COVID-19 adaptatif; santé mentale pandémie = contexte 2020 (obsolète),,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_201645_CSSR_81_FRE.pdf
+CSSR-082,CSSR,Chaîne cinétique fermée; test Sigma + position tête + routine préparation service = oui MAIS techno-focused,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_201652_CSSR_82_FRE.pdf
+CSSR-083,CSSR,Cinématique service jeunes vs pro; menaces matchs truqués + blessures ado filles + accélération latérale = utile,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_201648_CSSR_83_FRE.pdf
+CSSR-084,CSSR,Tactique constraints-based + mental coaching jeunes élites + multisports = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201654_CSSR_84_FRE.pdf
+CSSR-085,CSSR,Focus 4-6 ans (trop jeune); Jiani U14 compétitrice dépasse ce niveau,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_201644_CSSR_85_FRE.pdf
+CSSR-086,CSSR,Périodisation force/cond. 6 sem. junior élite utile (ignorer Play&Stay U10); philosophie coaching = partiel,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_201653_CSSR_86_FRE.pdf
+CSSR-087,CSSR,Gestion clubs/administration = non-pertinent pour athlète,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_201649_CSSR_87_FRE.pdf
+CSSR-088,CSSR,Charge entraînement U15 élites + footwork + temps réaction + hydratation = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201656_CSSR_88_FRE.pdf
+CSSR-089,CSSR,Apprentissage moteur (learn-move-compete) + HIIT + théories acquisition compétences = OUI,,,🟢🟢 HIGH,,2026-08-13,/opt/data/pdf_archive/20260726_201647_CSSR_89_FRE.pdf
+CSSR-090,CSSR,Gestion fédérations nationales/gouvernance = administratif non-pertinent Jiani athlète,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_201651_CSSR_90_FRE.pdf
+CSSR-091,CSSR,Biomécanique développement + parentalité joueur junior = oui MAIS contexte général,,,🟡 PARTIEL,,2026-08-13,/opt/data/pdf_archive/20260726_201700_CSSR_91_FRE.pdf
+CSSR-092,CSSR,Séquences service sub-12/sub-14 = tranche d'âge exacte; muscles haut du corps + routine motivation mentale + performance + pathologies prevention = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201648_CSSR_92_FRE.pdf
+CSSR-093,CSSR,Développement international/sociologie/gouvernance fédérations = administratif,,,🔴 NON,,2026-08-13,/opt/data/pdf_archive/20260726_201657_CSSR_93_FRE.pdf
+CSSR-094,CSSR,Muscles bas du corps + pleine conscience performance + HRV psychophysiologie + élite development bioécologie = CRITICAL,,,🟢🟢🟢 TRES HAUTE,,2026-08-13,/opt/data/pdf_archive/20260726_201656_CSSR_94_FRE.pdf
 34335307,PMID,Adaptations musculaires stretching 12-semaines adolescente athlète,,https://pubmed.ncbi.nlm.nih.gov/34335307/,🟢🟢 HIGH,"Muscle Architectural and Functional Adaptations Following 12-Weeks of Stretching in Adolescent Female Athletes",2026-08-15,
 25098662,PMID,Adaptations épaule spécifique tennis elite adolescent,,https://pubmed.ncbi.nlm.nih.gov/25098662/,🟢🟢 HIGH,"Age-Related, Sport-Specific Adaptions of the Shoulder Girdle in Elite Adolescent Tennis Players",2026-08-15,
 20587640,PMID,Profil scapulothoracique force mobilité tennis elite adolescent,,https://pubmed.ncbi.nlm.nih.gov/20587640/,🟢🟢 HIGH,"Descriptive profile of scapulothoracic position, strength and flexibility variables in adolescent elite tennis players",2026-08-15,
