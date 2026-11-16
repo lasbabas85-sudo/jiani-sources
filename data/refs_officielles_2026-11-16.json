@@ -1,0 +1,104 @@
+{
+  "date_verification": "2026-11-16",
+  "statut": "Recherche documentaire corrigée par l'assistant. Vérifié = page ou PDF ouvert et passage lu. Tout le reste est listé en non_verifie.",
+  "sources": [
+    {
+      "axe": "A",
+      "organisme": "Swiss Tennis",
+      "titre": "Player Development - Condition physique : développement physique et moteur des 11 à 14 ans",
+      "auteur": "B. Linder",
+      "annee": "2014 (indiquée dans le PDF)",
+      "url": "https://www.swisstennis.ch/media/1799/playerdevelopmenta4_kondition11_14_f.pdf",
+      "type_doc": "PDF fédéral (Swiss Tennis)",
+      "page": 4,
+      "citation": "12-16 h par semaine : 60 % entraînement tennistique, 20 % condition physique, 20 % jeu libre (tournois inclus)",
+      "verification": "PDF téléchargé via le navigateur (dl2/swiss_11_14_f.pdf), passage relu.",
+      "langue": "fr",
+      "tranche_age": "11 à 14 ans",
+      "apport": "Répartition globale entre tennis, physique et jeu libre. Pas de répartition par thème (technique, tactique, mental).",
+      "limites": "S'arrête à 14 ans. Répartition par domaine, pas par thème. Proposé comme garde-fou mensuel de répartition, pas comme cible par tag.",
+      "specifique_tennis": true
+    },
+    {
+      "axe": "A",
+      "organisme": "Tennis Australia (Matrix, Practice guidelines)",
+      "titre": "On court training guidelines",
+      "url": "https://matrix.tennis.com.au/requirements/on-court/practice-guidelines/",
+      "type_doc": "page web officielle (tableau de repères)",
+      "page": null,
+      "citation": "Age Hours per week (including competition) ... 14 18+ ... 15 20+",
+      "langue": "en",
+      "tranche_age": "7 à 17 ans",
+      "apport": "Volume total hebdomadaire recommandé par âge, compétition incluse.",
+      "limites": "Volume seul : aucune répartition entre domaines ni par période.",
+      "specifique_tennis": true
+    },
+    {
+      "axe": "B",
+      "organisme": "ITF Coaches Education Programme (Level 2)",
+      "titre": "Diapositives n° 27 « Awareness of standards and analysis of players »",
+      "annee": "2007 (mention Copyright © ITF 2007 sur les diapositives)",
+      "url": "https://www.filepicker.io/api/file/9fWCkuFGQfuKeUj0YD3o",
+      "hebergeur": "filepicker.io (tiers, non ITF)",
+      "type_doc": "diapositives de cours ITF, hébergées chez un tiers",
+      "page": 13,
+      "citation": "Approx. 8 h/week ; Approx 12 h/week ; 70 singles & 35 doubles per year ; 2:1 win loss ratio",
+      "verification": "PDF ouvert (dl/itf_l2_27.pdf), passage relu.",
+      "langue": "en",
+      "tranche_age": "13-15 ans (tel qu'écrit)",
+      "apport": "Repères de volume par domaine pour 13-15 ans.",
+      "limites": "Copyright ITF revendiqué sur le document mais origine officielle non établie (recherche en cours, tâche task5). Ne pas citer comme source officielle ITF avant résultat.",
+      "specifique_tennis": true,
+      "statut_citation": "EN ATTENTE du résultat copyright"
+    },
+    {
+      "axe": "B",
+      "organisme": "ITF Coaches Education Programme (Level 2)",
+      "titre": "Diapositives n° 29 « Planning the tennis training - II »",
+      "url": "https://www.filepicker.io/api/file/g2Fhtel4QnKebMbUjW92",
+      "hebergeur": "filepicker.io (tiers, non ITF)",
+      "page": 39,
+      "citation": "from 15 to 20 minutes per session, 2 to 3 times per week",
+      "verification": "PDF ouvert (dl/itf_l2_29.pdf), passage relu.",
+      "langue": "en",
+      "tranche_age": "non précisée dans le passage",
+      "apport": "Repère de dose pour l'entraînement mental.",
+      "limites": "Même réserve que n° 27 : origine officielle non établie.",
+      "specifique_tennis": true,
+      "statut_citation": "EN ATTENTE du résultat copyright"
+    },
+    {
+      "axe": "C",
+      "organisme": "Sport for Life (Canada), organisme multisport",
+      "titre": "The Female Athlete Perspective",
+      "url": "https://sportforlife.ca/wp-content/uploads/2016/11/The-Female-Athlete-Perspective-1.pdf",
+      "type_doc": "PDF (synthèse multisport)",
+      "page": 5,
+      "citation": "Reinforce correct technique and add strength and agility training during Train to Train, Train2Compete and Train to Win ; Prevention programs are recommended throughout the season with a special focus during the preseason.",
+      "verification": "PDF ouvert via browser, passage relu.",
+      "langue": "en",
+      "tranche_age": "stades LTAD Train to Train à Train to Win",
+      "apport": "Logique de prévention genou/LCA : technique + force + agilité, toute la saison, accent en présaison. Aucune dose.",
+      "limites": "Multisport : axe C uniquement. Aucune fréquence hebdomadaire ou par séance.",
+      "specifique_tennis": false
+    }
+  ],
+  "retire_du_corpus": [
+    {
+      "piste": "Mémoire italien « La preparazione fisica nel tennis » (fitp.it, tesi)",
+      "raison": "Mémoire d'élève-entraîneur, pas une publication fédérale. Limite 3 à 4 semaines de tournoi : avis d'auteur, non retenu comme référence officielle."
+    }
+  ],
+  "non_verifie": [
+    {"piste": "Swiss Tennis, chiffres 60/20/20 dans les extraits de recherche initiaux", "raison": "Remplacé par la lecture directe du PDF (voir sources)."},
+    {"piste": "ITF Coaching Review, article 469/1266", "url": "https://itfcoachingreview.com/index.php/journal/article/download/469/1266", "raison": "Page Cloudflare reçue, contenu non lu."},
+    {"piste": "Sport for Life LTAD 2.1 (60:40 ; 9-15 séances/semaine)", "url": "https://sportforlife.ca/wp-content/uploads/2017/04/LTAD-2.1-EN_web.pdf", "raison": "Passages vus seulement dans un extrait de recherche. Non ouvert."},
+    {"piste": "ITF Level 2, « Load values in tennis training » (p. 7) et « Stages of the game » (p. 9)", "raison": "Lus dans le scratch mais origine officielle non établie (task5). Non cités."}
+  ],
+  "axes_sans_resultat": [
+    {"axe": "A (répartition par thème et par période)", "resultat": "non trouvé. Aucune répartition en pourcentage par thème dans les sources officielles ouvertes."},
+    {"axe": "B (matrice de contenu par âge dans chaque domaine)", "resultat": "non trouvé sous forme vérifiée."},
+    {"axe": "C (dose de prévention neuromusculaire)", "resultat": "non trouvé : aucune fréquence ni dose chiffrée dans les documents ouverts."}
+  ],
+  "consequence_pour_le_modele": "Les seuils 30 / 15 / 25 % restent une convention de l'entraîneur, sans source. Le garde-fou 60/20/20 (Swiss Tennis, 11-14 ans) peut servir de contrôle global mensuel."
+}
